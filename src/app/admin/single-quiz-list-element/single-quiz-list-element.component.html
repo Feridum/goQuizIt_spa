@@ -1,0 +1,15 @@
+<div>
+  <div>{{quiz.name}}</div>
+  <div>{{quiz.status}}</div>
+  <div *ngIf="quiz.status === 'unactive'">
+    <a [routerLink]="['/admin/question-list', quiz.id]" >Question list</a>
+  </div>
+
+  <div *ngIf="quiz.status === 'active'">
+    {{quiz.token}}
+  </div>
+
+  <div *ngIf="quiz.status !== 'unactive'">
+    <a [routerLink]="['/admin/players', quiz.id]" >Players list</a>
+  </div>
+</div>

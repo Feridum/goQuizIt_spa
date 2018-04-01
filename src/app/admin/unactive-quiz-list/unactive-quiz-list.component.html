@@ -1,0 +1,7 @@
+<div>
+  <div *ngFor="let quiz of unactiveQuizList ">
+    <app-single-quiz-list-element [quiz]="quiz"></app-single-quiz-list-element>
+  </div>
+</div>
+
+<a routerLink="/admin/add-quiz" >New Quiz</a>

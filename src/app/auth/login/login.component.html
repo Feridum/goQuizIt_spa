@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm">
+  <input
+    formControlName="login"
+    type="text"
+    maxLength="25"/>
+
+  <input
+    formControlName="password"
+    type="text"
+    maxLength="25"/>
+</form>
+
+<button (click)="login()" [disabled]="loginForm.invalid">Log in</button>
