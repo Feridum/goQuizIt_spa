@@ -1,5 +1,5 @@
 <div>
-  <div *ngFor="let quiz of unactiveQuizList ">
+  <div *ngFor="let quiz of unactiveQuizList | async ">
     <app-single-quiz-list-element [quiz]="quiz"></app-single-quiz-list-element>
   </div>
 </div>

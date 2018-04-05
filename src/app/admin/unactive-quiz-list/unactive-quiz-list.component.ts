@@ -1,18 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-
-const mockData = [
-  {
-    id: '1',
-    name: 'foo1',
-    status: 'unactive'
-  },
-  {
-    id: '2',
-    name: 'foo2',
-    status: 'unactive'
-  }
-]
+import {select} from '@angular-redux/store';
+import {Observable} from 'rxjs/Observable';
+import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 
 
 @Component({
@@ -22,7 +11,8 @@ const mockData = [
 })
 export class UnactiveQuizListComponent implements OnInit {
 
-  unactiveQuizList = mockData;
+  @select(['quiz', 'unactiveQuizList']) unactiveQuizList: Observable<IUnactiveQuiz[]>;
+
 
   constructor() { }
 
