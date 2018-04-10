@@ -3,6 +3,7 @@
   <div>{{quiz.status}}</div>
   <div *ngIf="quiz.status === 'unactive'">
     <a [routerLink]="['/admin/question-list', quiz.id]" >Question list</a>
+    <a [routerLink]="['/admin/edit-quiz/', quiz.id]" > Edit quiz</a>
   </div>
 
   <div *ngIf="quiz.status === 'active'">

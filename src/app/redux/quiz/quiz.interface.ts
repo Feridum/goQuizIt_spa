@@ -1,6 +1,6 @@
 
 export interface IQuizState {
-  unactiveQuizList: IUnactiveQuiz[];
+  unactiveQuizList:  {[id: string]: IUnactiveQuiz};
 }
 
 
