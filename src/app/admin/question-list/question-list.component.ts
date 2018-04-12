@@ -3,6 +3,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {logout} from '../../redux/auth/auth.actions';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-question-list',
@@ -16,8 +17,6 @@ export class QuestionListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.route.paramMap.forEach(({params}: Params) => {
-      this.quizId = params['id'];
-    });
+      this.quizId = this.route.snapshot.params['id'];
   }
 }

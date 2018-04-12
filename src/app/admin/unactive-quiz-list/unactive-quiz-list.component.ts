@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {select} from '@angular-redux/store';
+import {select, select$} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
 import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 
+
+const mapToArray  = obs$ => obs$.map(x => Object.values(x));
 
 @Component({
   selector: 'app-unactive-quiz-list',
@@ -11,7 +13,7 @@ import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 })
 export class UnactiveQuizListComponent implements OnInit {
 
-  @select(['quiz', 'unactiveQuizList']) unactiveQuizList: Observable<IUnactiveQuiz[]>;
+  @select$(['quiz', 'unactiveQuizList'], mapToArray) unactiveQuizList: Observable<IUnactiveQuiz[]>;
 
 
   constructor() { }

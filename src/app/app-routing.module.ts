@@ -26,6 +26,7 @@ const routes: Routes = [
           {path: 'player/:playerId', component: SinglePlayerComponent}
         ]},
       {path: 'add-quiz', component: QuizFormComponent},
+      {path: 'edit-quiz/:quizId', component: QuizFormComponent},
       {path: 'question-list/:id', component: QuestionListComponent},
       {path: 'new-question/:id', component: QuestionFormComponent},
     ]

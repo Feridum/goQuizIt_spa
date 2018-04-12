@@ -1,3 +1,18 @@
-<p>
-  question-form works!
-</p>
+<form [formGroup]="questionForm">
+  <input
+    formControlName="question"
+    type="text"
+    maxLength="25" />
+
+  <div formArrayName="answers"
+       *ngFor="let answer of formAnswers.controls; let i = index;">
+    <div [formGroupName]="i">
+      <input formControlName="name" placeholder="Item name">
+    </div>
+  </div>
+</form>
+
+
+<button (click)="addAnswer()">+</button>
+
+<button (click)="removeLastAnswer()">-</button>
