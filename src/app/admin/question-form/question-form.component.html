@@ -16,3 +16,6 @@
 <button (click)="addAnswer()">+</button>
 
 <button (click)="removeLastAnswer()">-</button>
+
+
+<button class="btn" (click)="createQuestion()" [disabled]="questionForm.invalid">Add question</button>

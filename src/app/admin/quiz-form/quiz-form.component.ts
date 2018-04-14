@@ -16,7 +16,7 @@ export class QuizFormComponent implements OnInit {
 
   quizForm: FormGroup;
   quizId: string;
-  constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+    constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.quizForm = this.fb.group({
@@ -24,7 +24,7 @@ export class QuizFormComponent implements OnInit {
     });
 
     this.quizId = this.route.snapshot.params['quizId'];
-    console.log(this.quizId)
+    
     if (this.quizId) {
       this.ngRedux.select(['quiz', 'unactiveQuizList', this.quizId]).subscribe(e => this.quizForm.patchValue(e));
     }

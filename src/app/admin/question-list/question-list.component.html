@@ -1,5 +1,8 @@
-<p>
-  question-list works!
-</p>
+<div>
+  <div *ngFor="let question of questions | async ">
+    <div>{{question.question}}</div>
+    <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.id]"> Edit </a>
+  </div>
+</div>
 
-<a [routerLink]="['/admin/new-question', quizId]" >New question</a>
+<a [routerLink]="['/admin/quiz', quizId, 'new-question']" >New question</a>

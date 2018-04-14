@@ -27,8 +27,9 @@ const routes: Routes = [
         ]},
       {path: 'add-quiz', component: QuizFormComponent},
       {path: 'edit-quiz/:quizId', component: QuizFormComponent},
-      {path: 'question-list/:id', component: QuestionListComponent},
-      {path: 'new-question/:id', component: QuestionFormComponent},
+      {path: 'quiz/:quizId/questions', component: QuestionListComponent},
+      {path: 'quiz/:quizId/new-question', component: QuestionFormComponent},
+      {path: 'quiz/:quizId/edit-question/:questionId', component: QuestionFormComponent},
     ]
   }
 ];
