@@ -20,10 +20,16 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [ AuthGuardService ], children: [
       {path: '', component: QuizListComponent, children: [
           {path: '', component: UnactiveQuizListComponent},
-          {path: 'active-quiz', component: ActiveQuizListComponent},
-          {path: 'finished-quiz', component: FinishedQuizListComponent},
-          {path: 'players/:quizId', component: PlayerListComponent},
-          {path: 'player/:playerId', component: SinglePlayerComponent}
+          {path: 'active-quiz', children: [
+              {path: '', component: ActiveQuizListComponent},
+              {path: ':quizId/players', component: PlayerListComponent},
+              {path: ':quizId/players/:playerId', component: SinglePlayerComponent},
+            ]},
+          {path: 'finished-quiz', children: [
+              {path: '', component: FinishedQuizListComponent},
+              {path: ':quizId/players', component: PlayerListComponent},
+              {path: ':quizId/players/:playerId', component: SinglePlayerComponent},
+              ]},
         ]},
       {path: 'add-quiz', component: QuizFormComponent},
       {path: 'edit-quiz/:quizId', component: QuizFormComponent},

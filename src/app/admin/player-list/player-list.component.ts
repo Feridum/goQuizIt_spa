@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {select} from '@angular-redux/store';
 
 
 const mockData = [
@@ -22,6 +24,7 @@ const mockData = [
 })
 export class PlayerListComponent implements OnInit {
 
+  @select(['router']) route: Observable<string>;
   playersList = mockData
   constructor() { }
 

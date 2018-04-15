@@ -2,6 +2,6 @@
   <div *ngFor="let player of playersList">
     <div>{{player.firstName}} {{player.lastName}}</div>
     <div>{{player.score}}</div>
-    <a [routerLink]="['/admin/player', player.id]" >Player info</a>
+    <a [routerLink]="[route | async, player.id]" >Player info</a>
   </div>
 </div>

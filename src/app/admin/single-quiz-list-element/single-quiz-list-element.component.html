@@ -10,6 +10,6 @@
 </td>
 
 <td *ngIf="quiz.status !== 'unactive'">
-  <a [routerLink]="['/admin/players', quiz.id]">Players list</a>
+  <a [routerLink]="[route | async, quiz.id, 'players']">Players list</a>
 </td>
 
