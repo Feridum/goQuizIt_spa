@@ -1,5 +1,14 @@
-<div>
-  <div *ngFor="let quiz of activeQuizList ">
-    <app-single-quiz-list-element [quiz]="quiz"></app-single-quiz-list-element>
-  </div>
-</div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Status</th>
+    <th scope="col">Token</th>
+    <th scope="col">Akcje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr app-single-quiz-list-element *ngFor="let quiz of activeQuizList" [quiz]="quiz"></tr>
+  </tbody>
+</table>

@@ -1,11 +1,20 @@
-<p>
-  quiz-list works!
-</p>
+<div class="card text-xs-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs float-sm-left">
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin" >Unactive quiz</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin/active-quiz" >Active quiz</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin/finished-quiz" >Finished quiz</a>
+      </li>
+    </ul>
+    <button class="btn btn-danger float-sm-right btn-sm" (click)="logout()">Logout</button>
+  </div>
+  <div class="card-body">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 
-<button (click)="logout()">Logout</button>
-
-<a routerLink="/admin" >Unactive quiz</a>
-<a routerLink="/admin/active-quiz" >Active quiz</a>
-<a routerLink="/admin/finished-quiz" >Finished quiz</a>
-
-<router-outlet></router-outlet>

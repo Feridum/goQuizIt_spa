@@ -1,16 +1,15 @@
-<div>
-  <div>{{quiz.name}}</div>
-  <div>{{quiz.status}}</div>
-  <div *ngIf="quiz.status === 'unactive'">
-    <a [routerLink]="['/admin/quiz', quiz.id, 'questions']" >Question list</a>
-    <a [routerLink]="['/admin/edit-quiz/', quiz.id]" > Edit quiz</a>
-  </div>
+<td>{{quiz.name}}</td>
+<td>{{quiz.status}}</td>
+<td *ngIf="quiz.status === 'unactive'">
+  <a [routerLink]="['/admin/quiz', quiz.id, 'questions']">Question list</a>
+  <a [routerLink]="['/admin/edit-quiz/', quiz.id]"> Edit quiz</a>
+</td>
 
-  <div *ngIf="quiz.status === 'active'">
-    {{quiz.token}}
-  </div>
+<td *ngIf="quiz.status === 'active'">
+  {{quiz.token}}
+</td>
 
-  <div *ngIf="quiz.status !== 'unactive'">
-    <a [routerLink]="['/admin/players', quiz.id]" >Players list</a>
-  </div>
-</div>
+<td *ngIf="quiz.status !== 'unactive'">
+  <a [routerLink]="['/admin/players', quiz.id]">Players list</a>
+</td>
+

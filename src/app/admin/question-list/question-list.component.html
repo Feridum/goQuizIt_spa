@@ -1,8 +1,21 @@
-<div>
-  <div *ngFor="let question of questions | async ">
-    <div>{{question.question}}</div>
-    <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.id]"> Edit </a>
-  </div>
-</div>
-
-<a [routerLink]="['/admin/quiz', quizId, 'new-question']" >New question</a>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Pytanie</th>
+    <th scope="col">Akcje</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let question of questions | async ">
+    <td>{{question.question}}</td>
+    <td>
+      <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.id]"> Edit </a>
+    </td>
+  </tr>
+  <tr>
+    <td  colspan="3">
+      <a [routerLink]="['/admin/quiz', quizId, 'new-question']" >New question</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
