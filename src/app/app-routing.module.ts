@@ -13,9 +13,13 @@ import {QuestionListComponent} from './admin/question-list/question-list.compone
 import {QuestionFormComponent} from './admin/question-form/question-form.component';
 import {PlayerListComponent} from './admin/player-list/player-list.component';
 import {SinglePlayerComponent} from './admin/single-player/single-player.component';
+import {SearchQuizComponent} from './public/search-quiz/search-quiz.component';
+import {PlayerFormComponent} from './public/player-form/player-form.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
+  {path: 'search', component: SearchQuizComponent},
+  {path: 'enroll', component: PlayerFormComponent},
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent, canActivate: [ AuthGuardService ], children: [
       {path: '', component: QuizListComponent, children: [

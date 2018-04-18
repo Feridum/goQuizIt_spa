@@ -5,4 +5,4 @@
         maxLength="25" />
 </form>
 
-<button class="btn" (click)="createQuiz()">Create Quiz</button>
+<button class="btn" (click)="createQuiz()" [disabled]="quizForm.invalid">Create Quiz</button>

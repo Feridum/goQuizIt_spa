@@ -1,6 +1,6 @@
 import {IQuizState, IUnactiveQuiz} from './quiz.interface';
-import {CREATE_QUIZ_SUCCESS, UPDATE_QUIZ_SUCCESS} from './quiz.action-types';
-
+import {CREATE_QUIZ_SUCCESS, SET_QUIZ_ACTIVE_SUCCESS, UPDATE_QUIZ_SUCCESS} from './quiz.action-types';
+import { omit } from 'lodash';
 
 const mockData: { [id: string]: IUnactiveQuiz } = {
   1: {
@@ -18,7 +18,9 @@ const mockData: { [id: string]: IUnactiveQuiz } = {
 };
 
 const initialState: IQuizState = {
-  unactiveQuizList: mockData
+  unactiveQuizList: mockData,
+  activeQuizList: {},
+  finishedQuizList: {},
 };
 
 export const quizReducer = (state: IQuizState = initialState, action) => {
@@ -39,7 +41,17 @@ export const quizReducer = (state: IQuizState = initialState, action) => {
         ...state.unactiveQuizList,
         [payload.id]: {...payload, status: 'unactive'}
       }
-
+    }),
+    [SET_QUIZ_ACTIVE_SUCCESS] : (state, {payload}) => ({
+      ...state,
+      activeQuizList: {
+        ...state.activeQuizList,
+        [payload.id] : {
+          ...payload,
+          status: 'active'
+        }
+      },
+      unactiveQuizList : omit(state.unactiveQuizList, payload.id)
     })
   };
 

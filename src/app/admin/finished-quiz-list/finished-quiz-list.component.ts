@@ -1,18 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-const mockData = [
-  {
-    id: '1',
-    name: 'foo1',
-    status: 'finished'
-  },
-  {
-    id: '2',
-    name: 'foo2',
-    status: 'finished'
-  }
-]
-
+import {Observable} from 'rxjs/Observable';
+import {mapToArray} from '../../redux/quiz/quiz.helpers';
+import {select$} from '@angular-redux/store';
+import {IActiveQuiz, IFinishedQuiz} from '../../redux/quiz/quiz.interface';
 
 @Component({
   selector: 'app-finished-quiz-list',
@@ -21,7 +11,8 @@ const mockData = [
 })
 export class FinishedQuizListComponent implements OnInit {
 
-  finishedQuizList = mockData;
+  @select$(['quiz', 'finishedQuizList'], mapToArray) finishedQuizList: Observable<IFinishedQuiz[]>;
+
   constructor() { }
 
   ngOnInit() {

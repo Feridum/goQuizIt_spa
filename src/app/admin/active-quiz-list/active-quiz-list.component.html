@@ -9,6 +9,6 @@
   </tr>
   </thead>
   <tbody>
-  <tr app-single-quiz-list-element *ngFor="let quiz of activeQuizList" [quiz]="quiz"></tr>
+  <tr app-single-quiz-list-element *ngFor="let quiz of activeQuizList | async" [quiz]="quiz"></tr>
   </tbody>
 </table>

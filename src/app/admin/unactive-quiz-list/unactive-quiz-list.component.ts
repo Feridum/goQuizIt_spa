@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {select, select$} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
 import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
+import {mapToArray} from '../../redux/quiz/quiz.helpers';
 
 
-const mapToArray  = obs$ => obs$.map(x => Object.values(x));
+
 
 @Component({
   selector: 'app-unactive-quiz-list',

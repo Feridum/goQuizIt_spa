@@ -25,6 +25,10 @@ import { QuizListComponent } from './admin/quiz-list/quiz-list.component';
 import { SingleQuizListElementComponent } from './admin/single-quiz-list-element/single-quiz-list-element.component';
 import { PlayerListComponent } from './admin/player-list/player-list.component';
 import { SinglePlayerComponent } from './admin/single-player/single-player.component';
+import { SearchQuizComponent } from './public/search-quiz/search-quiz.component';
+import { PlayerFormComponent } from './public/player-form/player-form.component';
+import { QuizSolveComponent } from './public/quiz-solve/quiz-solve.component';
+import { SingleQuestionComponent } from './public/single-question/single-question.component';
 
 
 
@@ -45,6 +49,10 @@ import { SinglePlayerComponent } from './admin/single-player/single-player.compo
     SingleQuizListElementComponent,
     PlayerListComponent,
     SinglePlayerComponent,
+    SearchQuizComponent,
+    PlayerFormComponent,
+    QuizSolveComponent,
+    SingleQuestionComponent,
   ],
   imports: [
     BrowserModule,

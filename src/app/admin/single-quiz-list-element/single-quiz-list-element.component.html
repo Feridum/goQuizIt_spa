@@ -3,6 +3,7 @@
 <td *ngIf="quiz.status === 'unactive'">
   <a [routerLink]="['/admin/quiz', quiz.id, 'questions']">Question list</a>
   <a [routerLink]="['/admin/edit-quiz/', quiz.id]"> Edit quiz</a>
+  <button (click)="setQuizActive()">Active</button>
 </td>
 
 <td *ngIf="quiz.status === 'active'">

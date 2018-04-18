@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {mapToArray} from '../../redux/quiz/quiz.helpers';
+import {select$} from '@angular-redux/store';
+import {IActiveQuiz, IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 
 const mockData = [
   {
@@ -23,7 +27,8 @@ const mockData = [
 })
 export class ActiveQuizListComponent implements OnInit {
 
-  activeQuizList = mockData;
+  @select$(['quiz', 'activeQuizList'], mapToArray) activeQuizList: Observable<IActiveQuiz[]>;
+
   constructor() { }
 
   ngOnInit() {
