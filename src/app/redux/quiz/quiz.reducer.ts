@@ -1,45 +1,36 @@
 import {IQuizState, IUnactiveQuiz} from './quiz.interface';
-import {CREATE_QUIZ_SUCCESS, SET_QUIZ_ACTIVE_SUCCESS, UPDATE_QUIZ_SUCCESS} from './quiz.action-types';
+import {CREATE_QUIZ_SUCCESS, GET_QUIZ_LIST_SUCCESS, SET_QUIZ_ACTIVE_SUCCESS, UPDATE_QUIZ_SUCCESS} from './quiz.action-types';
 import { omit } from 'lodash';
-
-const mockData: { [id: string]: IUnactiveQuiz } = {
-  1: {
-    id: '1',
-    name: 'foo1',
-    status: 'unactive'
-  },
-  2: {
-    id: '2',
-    name:
-      'foo2',
-    status:
-      'unactive'
-  }
-};
-
 const initialState: IQuizState = {
-  unactiveQuizList: mockData,
-  activeQuizList: {},
-  finishedQuizList: {},
+  inactiveQuizList: null,
+  activeQuizList: null,
+  finishedQuizList: null,
 };
 
 export const quizReducer = (state: IQuizState = initialState, action) => {
   const behaviours = {
+    [GET_QUIZ_LIST_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      inactiveQuizList: payload.reduce(function(map, obj) {
+        map[obj.id] = obj;
+        return map;
+      }, {})
+    }),
     [CREATE_QUIZ_SUCCESS]: (state, {payload}) => ({
       ...state,
-      unactiveQuizList: {
-        ...state.unactiveQuizList,
+      inactiveQuizList: {
+        ...state.inactiveQuizList,
         [payload.id]: {
           ...payload,
-          status: 'unactive'
+          status: 'INACTIVE'
         }
       }
     }),
     [UPDATE_QUIZ_SUCCESS]: (state, {payload}) => ({
       ...state,
-      unactiveQuizList: {
-        ...state.unactiveQuizList,
-        [payload.id]: {...payload, status: 'unactive'}
+      inactiveQuizList: {
+        ...state.inactiveQuizList,
+        [payload.id]: payload
       }
     }),
     [SET_QUIZ_ACTIVE_SUCCESS] : (state, {payload}) => ({
@@ -51,7 +42,7 @@ export const quizReducer = (state: IQuizState = initialState, action) => {
           status: 'active'
         }
       },
-      unactiveQuizList : omit(state.unactiveQuizList, payload.id)
+      inactiveQuizList : omit(state.inactiveQuizList, payload.id)
     })
   };
 

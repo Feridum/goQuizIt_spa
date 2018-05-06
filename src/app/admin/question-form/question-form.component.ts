@@ -8,6 +8,7 @@ import { v4 as uuid } from 'uuid';
 import {CREATE_QUESTION_SUCCESS, UPDATE_QUESTION_SUCCESS} from '../../redux/question/questions.action-types';
 import 'rxjs/add/operator/filter';
 import {IQuestion} from '../../redux/question/questions.interface';
+import {createQuestion, getQuestions, updateQuestion} from '../../redux/question/questions.actions';
 
 const minAnswersLength = 2;
 const maxAnswersLength = 4;
@@ -31,27 +32,34 @@ export class QuestionFormComponent implements OnInit {
     this.quizId = this.route.snapshot.params['quizId'];
     this.questionId = this.route.snapshot.params['questionId'];
     this.questionForm = this.fb.group({
-      question: ['', [Validators.required]],
+      question: this.fb.group({
+        value: ['', Validators.required]
+      }),
       answers: this.fb.array([this.createAnswer(), this.createAnswer()])
     });
 
     if (this.questionId) {
       this.ngRedux.select(['questions', 'questions', this.quizId]).subscribe((list: IQuestion[]) => {
-        const question: IQuestion = list.find(e => e.id === this.questionId);
-        console.log(question);
-        if (question.answers.length > 2) {
-          for (let i = 0; i < question.answers.length - 2 ; i++) {
-            this.addAnswer();
+        if (list === null) {
+          this.ngRedux.dispatch(getQuestions(this.quizId));
+        } else {
+          const question: IQuestion = list.find(e => e.question.questionId === this.questionId);
+          console.log(question);
+          if (question.answers.length > 2) {
+            for (let i = 0; i < question.answers.length - 2; i++) {
+              this.addAnswer();
+            }
           }
+          this.questionForm.patchValue(question);
         }
-        this.questionForm.patchValue(question);
       });
     }
   }
 
   createAnswer() {
     return this.fb.group({
-      name: ['', Validators.required]
+      value: ['', Validators.required],
+      positive: [false]
     });
   }
 
@@ -72,14 +80,20 @@ export class QuestionFormComponent implements OnInit {
   get formAnswers() { return <FormArray>this.questionForm.get('answers'); }
 
 
-  createQuestion() {
+  submitForm() {
     console.log(this.questionForm.value);
     if (!this.questionId) {
-      this.ngRedux.dispatch({type: CREATE_QUESTION_SUCCESS, payload: {id: uuid(), ...this.questionForm.value}, meta: {quizId: this.quizId}});
+      this.ngRedux.dispatch(createQuestion(this.quizId, this.questionForm.value)).then((e: any) => {
+        if (!e.error) {
+          this.location.back();
+        }
+      });
     } else {
-      this.ngRedux.dispatch({type: UPDATE_QUESTION_SUCCESS, payload: {id: this.questionId,  ...this.questionForm.value}, meta: {quizId: this.quizId}});
+      this.ngRedux.dispatch(updateQuestion(this.quizId, this.questionId, this.questionForm.value)).then((e: any) => {
+        if (!e.error) {
+          this.location.back();
+        }
+      });
     }
-
-    this.location.back();
   }
 }

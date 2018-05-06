@@ -1,13 +1,15 @@
 <form [formGroup]="questionForm">
-  <input
-    formControlName="question"
-    type="text"
-    maxLength="25" />
+  <div formGroupName="question">
+    <input
+      formControlName="value"
+      type="text"
+      maxLength="25" />
+  </div>
 
   <div formArrayName="answers"
        *ngFor="let answer of formAnswers.controls; let i = index;">
     <div [formGroupName]="i">
-      <input formControlName="name" placeholder="Item name">
+      <input formControlName="value" placeholder="Item name">
     </div>
   </div>
 </form>
@@ -18,4 +20,4 @@
 <button (click)="removeLastAnswer()">-</button>
 
 
-<button class="btn" (click)="createQuestion()" [disabled]="questionForm.invalid">Add question</button>
+<button class="btn" (click)="submitForm()" [disabled]="questionForm.invalid">Add question</button>

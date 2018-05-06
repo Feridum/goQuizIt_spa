@@ -15,6 +15,5 @@ export class AdminComponent implements OnInit {
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
-    this.ngRedux.dispatch(createQuiz()).then(e => console.log(e));
   }
 }

@@ -8,7 +8,7 @@
   </tr>
   </thead>
   <tbody>
-    <tr app-single-quiz-list-element *ngFor="let quiz of unactiveQuizList | async " [quiz]="quiz"></tr>
+    <tr app-single-quiz-list-element *ngFor="let quiz of inactiveQuizList | async " [quiz]="quiz"></tr>
   <tr>
     <td  colspan="3">
       <a routerLink="/admin/add-quiz" >New Quiz</a>

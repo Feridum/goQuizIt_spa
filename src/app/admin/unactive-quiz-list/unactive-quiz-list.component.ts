@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {select, select$} from '@angular-redux/store';
+import {NgRedux, select, select$} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
 import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 import {mapToArray} from '../../redux/quiz/quiz.helpers';
+import {createQuiz, getQuizList} from '../../redux/quiz/quiz.actions';
+import {IAppState} from '../../redux/state.interface';
 
 
 
@@ -14,12 +16,17 @@ import {mapToArray} from '../../redux/quiz/quiz.helpers';
 })
 export class UnactiveQuizListComponent implements OnInit {
 
-  @select$(['quiz', 'unactiveQuizList'], mapToArray) unactiveQuizList: Observable<IUnactiveQuiz[]>;
+  @select$(['quiz', 'inactiveQuizList'], mapToArray) inactiveQuizList: Observable<IUnactiveQuiz[]>;
 
 
-  constructor() { }
+  constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
+    this.inactiveQuizList.subscribe(quizList => {
+      if (quizList === null) {
+        this.ngRedux.dispatch(getQuizList());
+      }
+    });
   }
 
 }

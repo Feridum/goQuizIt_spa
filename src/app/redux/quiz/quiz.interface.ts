@@ -1,6 +1,6 @@
 
 export interface IQuizState {
-  unactiveQuizList:  {[id: string]: IUnactiveQuiz};
+  inactiveQuizList:  {[id: string]: IUnactiveQuiz};
   activeQuizList: {[id: string]: IActiveQuiz};
   finishedQuizList: {[id: string]: IFinishedQuiz};
 }
@@ -8,21 +8,21 @@ export interface IQuizState {
 
 export interface IUnactiveQuiz {
   id: string;
-  name: string;
-  status: IQuizStatus;
+  title: string;
+  state: IQuizStatus;
 }
 
 export interface IActiveQuiz {
   id: string;
-  name: string;
-  status: IQuizStatus;
+  title: string;
+  state: IQuizStatus;
 }
 
 
 export interface IFinishedQuiz {
   id: string;
-  name: string;
-  status: IQuizStatus;
+  title: string;
+  state: IQuizStatus;
 }
 
-export type IQuizStatus = 'unactive' | 'active' | 'finished';
+export type IQuizStatus = 'INACTIVE' | 'ACTIVE' | 'FINISHED';

@@ -5,6 +5,7 @@ import {NgRedux} from '@angular-redux/store';
 import {CREATE_QUIZ_SUCCESS, UPDATE_QUIZ_SUCCESS} from '../../redux/quiz/quiz.action-types';
 import {ActivatedRoute, Router} from '@angular/router';
 import { v4 as uuid } from 'uuid';
+import {createQuiz, getQuizList, updateQuiz} from '../../redux/quiz/quiz.actions';
 
 @Component({
   selector: 'app-quiz-form',
@@ -20,24 +21,39 @@ export class QuizFormComponent implements OnInit {
 
   ngOnInit() {
     this.quizForm = this.fb.group({
-      name: ['', [Validators.required]],
+      title: ['', [Validators.required]],
     });
 
     this.quizId = this.route.snapshot.params['quizId'];
-    
+
     if (this.quizId) {
-      this.ngRedux.select(['quiz', 'unactiveQuizList', this.quizId]).subscribe(e => this.quizForm.patchValue(e));
+      this.ngRedux.select(['quiz', 'inactiveQuizList']).subscribe(e => {
+        if (e === null) {
+          this.ngRedux.dispatch(getQuizList());
+        } else {
+          this.quizForm.patchValue(e[this.quizId]);
+        }
+      });
     }
   }
 
+  //TODO remove this ownerID
   createQuiz() {
     if (!this.quizId) {
-      this.ngRedux.dispatch({type: CREATE_QUIZ_SUCCESS, payload: {id: uuid(), ...this.quizForm.value}});
+      console.log({...this.quizForm.value, ownerId: 'xyz'});
+      this.ngRedux.dispatch(createQuiz({...this.quizForm.value, ownerId: 'xyz'})).then((e: any) => {
+        if (!e.error) {
+          this.router.navigate(['/admin']);
+        }
+      });
     } else {
-      this.ngRedux.dispatch({type: UPDATE_QUIZ_SUCCESS, payload: {id: this.quizId,  ...this.quizForm.value}});
+      this.ngRedux.dispatch(updateQuiz(this.quizId, {...this.quizForm.value, ownerId: 'xyz'})).then((e: any) => {
+        if (!e.error) {
+          this.router.navigate(['/admin']);
+        }
+      });
     }
 
-    this.router.navigate(['/admin']);
   }
 
 }
