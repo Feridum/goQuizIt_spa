@@ -1,5 +1,5 @@
 import {RSAA} from 'redux-api-middleware'
-import {APP_URL} from '../../constants';
+import {API_URL} from '../../constants';
 import {
   CREATE_QUESTION_FAILURE,
   CREATE_QUESTION_REQUEST,
@@ -14,7 +14,7 @@ import {IRSAAction} from '../state.interface';
 export const getQuestions = (quizId): IRSAAction => ({
   [RSAA]: {
     method: 'GET',
-    endpoint: `${APP_URL}/quiz/${quizId}/questionWithAnswers`,
+    endpoint: `${API_URL}/quiz/${quizId}/questionWithAnswers`,
     types: [
       FETCH_QUESTIONS_LIST_REQUEST,
       {
@@ -28,9 +28,9 @@ export const getQuestions = (quizId): IRSAAction => ({
 
 export const createQuestion = (quizId, question): IRSAAction => ({
     [RSAA]: {
-      endpoint: `${APP_URL}/quiz/${quizId}/questionWithAnswers`,
+      endpoint: `${API_URL}/quiz/${quizId}/questionWithAnswers`,
       method: 'POST',
-      body: JSON.stringify(question),
+      body: question,
       types: [
         CREATE_QUESTION_REQUEST,
         {
@@ -44,9 +44,9 @@ export const createQuestion = (quizId, question): IRSAAction => ({
 
 export const updateQuestion = (quizId, questionId, question): IRSAAction => ({
   [RSAA]: {
-    endpoint: `${APP_URL}/quiz/${questionId}/questionWithAnswers`,
+    endpoint: `${API_URL}/quiz/${questionId}/questionWithAnswers`,
     method: 'PUT',
-    body: JSON.stringify(question),
+    body: question,
     types: [
       UPDATE_QUESTION_REQUEST,
       {

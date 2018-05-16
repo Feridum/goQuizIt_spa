@@ -12,6 +12,7 @@ import { RootEpics } from './epics';
 import { apiMiddleware } from 'redux-api-middleware';
 import {AuthEpics} from './auth/auth.epics';
 import {headersMiddleware} from '../middlewares/headersMiddleware';
+import {errorsMiddleware} from '../middlewares/errors';
 
 @NgModule({
   imports: [NgReduxModule, NgReduxRouterModule.forRoot()],
@@ -30,7 +31,9 @@ export class StoreModule {
       [
         headersMiddleware,
         apiMiddleware,
-        createLogger(), ...rootEpics.createEpics()
+        errorsMiddleware,
+        createLogger(),
+        ...rootEpics.createEpics()
       ],
       devTools.isEnabled() ? [ devTools.enhancer() ] : []);
 
