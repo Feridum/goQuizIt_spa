@@ -1,32 +1,37 @@
-import {RSAA, RSAAction} from 'redux-api-middleware';
+import {RSAA} from 'redux-api-middleware';
 import {
   CREATE_QUIZ_FAILURE, CREATE_QUIZ_REQUEST, CREATE_QUIZ_SUCCESS, GET_QUIZ_LIST_FAILURE, GET_QUIZ_LIST_REQUEST,
   GET_QUIZ_LIST_SUCCESS, UPDATE_QUIZ_FAILURE, UPDATE_QUIZ_REQUEST, UPDATE_QUIZ_SUCCESS
 } from './quiz.action-types';
 import {IRSAAction} from '../state.interface';
+import {API_URL} from '../../constants';
 
 
-export const createQuiz = (): IRSAAction => ({
-  [RSAA]: {
-    endpoint: 'localhost/api/quiz',
-    method: 'GET',
-    types: [CREATE_QUIZ_REQUEST, CREATE_QUIZ_SUCCESS, CREATE_QUIZ_FAILURE]
-  }
-});
+export const createQuiz = (quiz): IRSAAction => {
+  return {
+    [RSAA]: {
+      endpoint: `${API_URL}/quiz`,
+      method: 'POST',
+      body: quiz,
+      types: [CREATE_QUIZ_REQUEST, CREATE_QUIZ_SUCCESS, CREATE_QUIZ_FAILURE]
+    }
+  };
+}
 
 
 export const getQuizList =  (): IRSAAction => ({
   [RSAA]: {
-    endpoint: 'localhost/api/quiz',
+    endpoint: `${API_URL}/quiz`,
     method: 'GET',
     types: [GET_QUIZ_LIST_REQUEST, GET_QUIZ_LIST_SUCCESS, GET_QUIZ_LIST_FAILURE]
   }
 });
 
-export const updateQuiz =  (): IRSAAction => ({
+export const updateQuiz =  (quizId, quiz): IRSAAction => ({
   [RSAA]: {
-    endpoint: 'localhost/api/quiz',
-    method: 'GET',
+    endpoint: `${API_URL}/quiz/${quizId}`,
+    method: 'PUT',
+    body: quiz,
     types: [UPDATE_QUIZ_REQUEST, UPDATE_QUIZ_SUCCESS, UPDATE_QUIZ_FAILURE]
   }
 });

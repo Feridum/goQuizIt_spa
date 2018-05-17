@@ -10,7 +10,7 @@ export const authReducer = (state: IAuthState = initialState , action) => {
   const behaviours = {
     [FETCH_TOKEN_SUCCESS]: (state, {payload}) => ({
       ...state,
-      token: payload && payload.token,
+      token: payload && payload.access_token,
       isAuthenticated: true,
     }),
     [LOGOUT]: () => ({

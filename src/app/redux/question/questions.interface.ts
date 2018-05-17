@@ -1,12 +1,14 @@
 
-export interface IQuestionsState{
+export interface IQuestionsState {
   questions: {[id: string]: IQuestion[]};
 }
 
 
 export interface IQuestion {
-  id: string;
-  question: string;
+  question: {
+    questionId: string;
+    value: string
+  };
   answers: IQuestionAnswer[];
   image?: string;
   youtube?: string;

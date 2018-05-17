@@ -7,9 +7,9 @@
   </thead>
   <tbody>
   <tr *ngFor="let question of questions | async ">
-    <td>{{question.question}}</td>
+    <td>{{question.question.value}}</td>
     <td>
-      <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.id]"> Edit </a>
+      <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.question.questionId]"> Edit </a>
     </td>
   </tr>
   <tr>

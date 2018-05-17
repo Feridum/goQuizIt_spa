@@ -9,4 +9,9 @@ export interface IAppState {
 }
 
 
-export type IRSAAction = RSAAction<string, string, string>;
+type IRSAAType = string | {
+  type: string,
+  meta: any
+};
+
+export type IRSAAction = RSAAction<IRSAAType, IRSAAType, IRSAAType>;

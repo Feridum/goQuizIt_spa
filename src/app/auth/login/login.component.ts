@@ -4,6 +4,7 @@ import {IAppState} from '../../redux/state.interface';
 import {FETCH_TOKEN_SUCCESS} from '../../redux/auth/auth.action-types';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {fetchToken} from '../../redux/auth/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -18,15 +19,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      login: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
 
 
   login() {
-    console.log(this.loginForm);
-    this.ngRedux.dispatch({type: FETCH_TOKEN_SUCCESS, payload: {token: 'aaa'}});
-    this.router.navigate(['/admin']);
+    const formValues = this.loginForm.value;
+    console.log(formValues);
+    this.ngRedux.dispatch(fetchToken(formValues.username, formValues.password)).then((e: any) => {
+      if (!e.error) {
+        this.router.navigate(['/admin']);
+      }
+    });
   }
 }
