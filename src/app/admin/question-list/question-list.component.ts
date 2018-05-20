@@ -32,7 +32,7 @@ export class QuestionListComponent implements OnInit {
         if (questionList === null) {
           this.ngRedux.dispatch(getQuestions(this.quizId));
         }
-      });
+      }).unsubscribe();
     }
   }
 }

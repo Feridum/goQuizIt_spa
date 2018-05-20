@@ -6,7 +6,10 @@ export const errorsMiddleware = store => next => action => {
   console.log(action)
   if(action.error){
     console.log(action.payload);
-    store.dispatch(logout());
+    if(action.error.status === 403){
+      store.dispatch(logout());
+    }
+
   }
   return next(action);
 };

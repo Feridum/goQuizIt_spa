@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {mapToArray} from '../../redux/quiz/quiz.helpers';
-import {select$} from '@angular-redux/store';
+import {NgRedux, select$} from '@angular-redux/store';
 import {IActiveQuiz, IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
+import {getActiveQuizList, getInactiveQuizList} from '../../redux/quiz/quiz.actions';
+import {IAppState} from '../../redux/state.interface';
 
 const mockData = [
   {
@@ -29,9 +31,14 @@ export class ActiveQuizListComponent implements OnInit {
 
   @select$(['quiz', 'activeQuizList'], mapToArray) activeQuizList: Observable<IActiveQuiz[]>;
 
-  constructor() { }
+  constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {
+    this.activeQuizList.subscribe(quizList => {
+      if (quizList === null) {
+        this.ngRedux.dispatch(getActiveQuizList());
+      }
+    }).unsubscribe();
   }
 
 }

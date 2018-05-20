@@ -5,6 +5,7 @@ import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 import {Observable} from 'rxjs/Observable';
 import {IAppState} from '../../redux/state.interface';
 import {SET_QUIZ_ACTIVE_SUCCESS} from '../../redux/quiz/quiz.action-types';
+import {setQuizActive} from '../../redux/quiz/quiz.actions';
 
 @Component({
   selector: '[app-single-quiz-list-element]',
@@ -22,7 +23,7 @@ export class SingleQuizListElementComponent implements OnInit {
   }
 
   setQuizActive() {
-    this.ngRedux.dispatch({type: SET_QUIZ_ACTIVE_SUCCESS, payload: {...this.quiz}});
+    this.ngRedux.dispatch(setQuizActive(this.quiz.id));
   }
 
 }

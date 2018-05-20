@@ -1,3 +1,46 @@
-<p>
-  player-form works!
-</p>
+<form [formGroup]="playerForm">
+  <input
+    formControlName="name"
+    type="text"
+    maxLength="25" />
+
+  <div *ngIf="isFieldValid('name')">
+    Pole imie zawiera nieprawidłowe dane
+  </div>
+
+  <label>Nazwisko</label>
+  <input
+    formControlName="surname"
+    type="text"
+    maxLength="25"/>
+
+  <div *ngIf="isFieldValid('surname')">
+    Pole nazwisko zawiera nieprawidłowe dane
+  </div>
+
+
+  <label>Email</label>
+  <input
+    formControlName="mail"
+    type="text"
+    maxLength="25"/>
+
+  <div *ngIf="isFieldValid('mail')">
+    Pole email zawiera nieprawidłowe dane
+  </div>
+
+
+  <label>Telefon</label>
+  <input
+    formControlName="telephoneNumber"
+    type="text"
+    maxLength="25"/>
+
+  <div *ngIf="isFieldValid('telephoneNumber')">
+    Pole telefon zawiera nieprawidłowe dane
+  </div>
+
+  <button class="btn" (click)="createPlayer()" [disabled]="playerForm.invalid">Start Quiz</button>
+</form>
+
+

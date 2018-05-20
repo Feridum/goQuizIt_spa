@@ -1,3 +1,6 @@
-<p>
-  single-question works!
-</p>
+<div>{{(question | async)?.value}}</div>
+
+<div *ngFor="let answer of answers | async ">
+
+  <button>{{answer.value}}</button>
+</div>

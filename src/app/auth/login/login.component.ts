@@ -14,7 +14,6 @@ import {fetchToken} from '../../redux/auth/auth.actions';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-
   constructor(private ngRedux: NgRedux<IAppState>, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -25,10 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
 
-  login() {
+  async login() {
     const formValues = this.loginForm.value;
-    console.log(formValues);
-    this.ngRedux.dispatch(fetchToken(formValues.username, formValues.password)).then((e: any) => {
+    await this.ngRedux.dispatch(fetchToken(formValues.username, formValues.password)).then((e: any) => {
       if (!e.error) {
         this.router.navigate(['/admin']);
       }
