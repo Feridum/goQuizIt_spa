@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {NgRedux} from '@angular-redux/store';
+import {IAppState} from '../../redux/state.interface';
+import {fetchQuizByToken} from '../../redux/player/player.actions';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-search-quiz',
@@ -8,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class SearchQuizComponent implements OnInit {
 
   token: string;
-  constructor() { }
+  constructor(private router: Router, private ngRedux: NgRedux<IAppState>, private location: Location) { }
 
   ngOnInit() {
   }
@@ -18,6 +23,11 @@ export class SearchQuizComponent implements OnInit {
   }
 
   searchQuiz() {
-    console.log(this.token);
+    this.ngRedux.dispatch(fetchQuizByToken(this.token)).then((e: any) => {
+      if (!e.error) {
+        this.router.navigate(['/enroll/', e.payload.id]);
+      }
+    });
+
   }
 }

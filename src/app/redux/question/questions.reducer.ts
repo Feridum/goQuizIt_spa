@@ -20,7 +20,7 @@ export const questionsReducer = (state: IQuestionsState = initialState, action) 
       questions: {
         ...state.questions,
         [meta.quizId]: [
-          ...(state.questions[meta.quizId] || []),
+          ...(state.questions && state.questions[meta.quizId] || []),
           payload,
         ]
       }

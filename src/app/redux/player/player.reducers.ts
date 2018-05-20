@@ -1,0 +1,27 @@
+import {IPlayerState} from './player.interface';
+import {CREATE_PLAYER_SUCCESS, FETCH_QUIZ_BY_TOKEN_SUCCESS} from './player.action-types';
+
+const initialState: IPlayerState = {
+  quiz: null,
+  playerId: null,
+  question: null,
+  answers: null,
+};
+
+export const playerReducer = (state: IPlayerState = initialState, action) => {
+  const behaviours = {
+    [FETCH_QUIZ_BY_TOKEN_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      quiz: payload
+    }),
+    [CREATE_PLAYER_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      playerId: payload.Player,
+      question: payload.Question,
+      answers: payload.Answers
+    })
+  };
+
+  const behaviour = behaviours[action.type];
+  return behaviour ? behaviour(state, action) : state;
+};
