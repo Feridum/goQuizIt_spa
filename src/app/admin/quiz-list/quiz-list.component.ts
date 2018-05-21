@@ -11,13 +11,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class QuizListComponent implements OnInit {
 
-  constructor( private ngRedux: NgRedux<IAppState>, private router: ActivatedRoute) { }
+  constructor( private ngRedux: NgRedux<IAppState>, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.router.snapshot.url);
+
   }
 
   logout() {
     this.ngRedux.dispatch(logout());
+    this.router.navigate(['/login']);
   }
 }

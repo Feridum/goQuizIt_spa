@@ -38,7 +38,7 @@ export class ActiveQuizListComponent implements OnInit {
       if (quizList === null) {
         this.ngRedux.dispatch(getActiveQuizList());
       }
-    });
+    }).unsubscribe();
   }
 
 }

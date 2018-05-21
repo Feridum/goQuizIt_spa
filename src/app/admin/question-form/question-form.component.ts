@@ -53,7 +53,7 @@ export class QuestionFormComponent implements OnInit {
           }
           this.questionForm.patchValue(question);
         }
-      });
+      }).unsubscribe();
     }
   }
 

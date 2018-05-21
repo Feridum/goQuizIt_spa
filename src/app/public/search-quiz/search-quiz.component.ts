@@ -13,6 +13,7 @@ import {Location} from '@angular/common';
 export class SearchQuizComponent implements OnInit {
 
   token: string;
+  quizId: String = null;
   constructor(private router: Router, private ngRedux: NgRedux<IAppState>, private location: Location) { }
 
   ngOnInit() {
@@ -22,12 +23,15 @@ export class SearchQuizComponent implements OnInit {
     this.token = event.target.value;
   }
 
-  searchQuiz() {
-    this.ngRedux.dispatch(fetchQuizByToken(this.token)).then((e: any) => {
+  async searchQuiz() {
+    await this.ngRedux.dispatch(fetchQuizByToken(this.token)).then((e: any) => {
       if (!e.error) {
-        this.router.navigate(['/enroll/', e.payload.id]);
+        this.quizId = e.payload.id;
       }
     });
 
+    if(this.quizId) {
+      this.router.navigate(['/enroll/', this.quizId]);
+    }
   }
 }

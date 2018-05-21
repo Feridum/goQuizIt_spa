@@ -13,10 +13,11 @@ import { apiMiddleware } from 'redux-api-middleware';
 import {AuthEpics} from './auth/auth.epics';
 import {headersMiddleware} from '../middlewares/headersMiddleware';
 import {errorsMiddleware} from '../middlewares/errors';
+import {PlayerEpics} from './player/player.epics';
 
 @NgModule({
   imports: [NgReduxModule, NgReduxRouterModule.forRoot()],
-  providers: [RootEpics, AuthEpics],
+  providers: [RootEpics, AuthEpics, PlayerEpics],
 })
 export class StoreModule {
   constructor(

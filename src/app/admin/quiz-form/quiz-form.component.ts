@@ -11,13 +11,14 @@ import {createQuiz, getInactiveQuizList, updateQuiz} from '../../redux/quiz/quiz
   selector: 'app-quiz-form',
   templateUrl: './quiz-form.component.html',
   styleUrls: ['./quiz-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizFormComponent implements OnInit {
 
   quizForm: FormGroup;
   quizId: string;
-    constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+    constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+      this.ngOnInit();
+    }
 
   ngOnInit() {
     this.quizForm = this.fb.group({
@@ -33,7 +34,7 @@ export class QuizFormComponent implements OnInit {
         } else {
           this.quizForm.patchValue(e[this.quizId]);
         }
-      });
+      }).unsubscribe();
     }
   }
 

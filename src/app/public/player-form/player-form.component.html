@@ -40,9 +40,7 @@
     Pole telefon zawiera nieprawidłowe dane
   </div>
 
-  <button class="btn" (click)="createPlayer()">Start Quiz</button>
   <button class="btn" (click)="createPlayer()" [disabled]="playerForm.invalid">Start Quiz</button>
-  <button class="btn" (click)="createPlayer()" [disabled]="!playerForm.valid">Start Quiz</button>
 </form>
 
 
