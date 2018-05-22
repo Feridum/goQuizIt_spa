@@ -5,19 +5,20 @@ import {NgRedux} from '@angular-redux/store';
 import {CREATE_QUIZ_SUCCESS, UPDATE_QUIZ_SUCCESS} from '../../redux/quiz/quiz.action-types';
 import {ActivatedRoute, Router} from '@angular/router';
 import { v4 as uuid } from 'uuid';
-import {createQuiz, getQuizList, updateQuiz} from '../../redux/quiz/quiz.actions';
+import {createQuiz, getInactiveQuizList, updateQuiz} from '../../redux/quiz/quiz.actions';
 
 @Component({
   selector: 'app-quiz-form',
   templateUrl: './quiz-form.component.html',
   styleUrls: ['./quiz-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuizFormComponent implements OnInit {
 
   quizForm: FormGroup;
   quizId: string;
-    constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+    constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+      this.ngOnInit();
+    }
 
   ngOnInit() {
     this.quizForm = this.fb.group({
@@ -29,25 +30,25 @@ export class QuizFormComponent implements OnInit {
     if (this.quizId) {
       this.ngRedux.select(['quiz', 'inactiveQuizList']).subscribe(e => {
         if (e === null) {
-          this.ngRedux.dispatch(getQuizList());
+          this.ngRedux.dispatch(getInactiveQuizList());
         } else {
           this.quizForm.patchValue(e[this.quizId]);
         }
-      });
+      }).unsubscribe();
     }
   }
 
-  //TODO remove this ownerID
+
   createQuiz() {
     if (!this.quizId) {
       console.log({...this.quizForm.value, ownerId: 'xyz'});
-      this.ngRedux.dispatch(createQuiz({...this.quizForm.value, ownerId: 'xyz'})).then((e: any) => {
+      this.ngRedux.dispatch(createQuiz(this.quizForm.value)).then((e: any) => {
         if (!e.error) {
           this.router.navigate(['/admin']);
         }
       });
     } else {
-      this.ngRedux.dispatch(updateQuiz(this.quizId, {...this.quizForm.value, ownerId: 'xyz'})).then((e: any) => {
+      this.ngRedux.dispatch(updateQuiz(this.quizId, this.quizForm.value)).then((e: any) => {
         if (!e.error) {
           this.router.navigate(['/admin']);
         }

@@ -33,7 +33,8 @@ export class QuestionFormComponent implements OnInit {
     this.questionId = this.route.snapshot.params['questionId'];
     this.questionForm = this.fb.group({
       question: this.fb.group({
-        value: ['', Validators.required]
+        value: ['', Validators.required],
+        type: ['SINGLE_CHOICE']
       }),
       answers: this.fb.array([this.createAnswer(), this.createAnswer()])
     });
@@ -52,7 +53,7 @@ export class QuestionFormComponent implements OnInit {
           }
           this.questionForm.patchValue(question);
         }
-      });
+      }).unsubscribe();
     }
   }
 
