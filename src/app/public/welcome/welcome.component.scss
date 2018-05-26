@@ -1,0 +1,128 @@
+@import '../../../variables'; //wiem, że masz to w styles.scss, ale rzuca mi unresolved bez tego importa
+
+.main-page {
+  background: url("../../../assets/images/backgrounds/background-blue.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logotype-row {
+  margin-top: 3vw;
+}
+
+.logomark {
+  background: url("../../../assets/images/logos/GoQuizIt_Logo.png") no-repeat center;
+  opacity: 0.75;
+  background-size: contain;
+  height: 25vw;
+}
+
+.logo-text {
+  font-family: "Palatino Linotype", serif;
+  font-size: 8vw;
+  color: white;
+  opacity: 0.75;
+  letter-spacing: 7px;
+  text-align: center;
+}
+
+.arrow-down {
+  opacity: 0.75;
+  color: white;
+  font-size: 10vh;
+  text-align: center;
+}
+
+.spacer {
+  height: 30vh;
+}
+
+.banner {
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  max-height: 55vh;
+  overflow: hidden;
+}
+
+.login {
+  background-image: url("../../../assets/images/backgrounds/banner-background-1.svg")
+}
+
+.login-overlay {
+  background-color: #06a7ea50;
+  height: 100%;
+  width: 100%;
+}
+
+.quiz {
+  background-image: url("../../../assets/images/backgrounds/banner-background-2.svg")
+}
+
+.quiz-overlay {
+  background-color: #02344a50;
+  height: 100%;
+  width: 100%;
+}
+
+.token-movement-bar {
+  height: 57px;
+  background-color: white;
+}
+
+.token {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  height: 120px;
+  overflow: hidden;
+  margin-top: -57px;
+}
+
+.login-token {
+  background-image: url("../../../assets/images/backgrounds/token-background-light.png");
+  color: $primary-light;
+}
+
+.quiz-token {
+  background-image: url("../../../assets/images/backgrounds/token-background-dark.png");
+  color: $primary-dark;
+}
+
+.token-icon {
+  font-size: 50px;
+  padding-top: 35px;
+}
+
+.banner-content {
+  padding-top: 15vh;
+  margin-bottom: 50vh;
+}
+
+.banner-text {
+  color: white;
+  font-size: 30px;
+  font-weight: 300;
+  font-family: "Open Sans", "Arial", sans-serif;
+}
+
+.btn-xlg {
+  font-size: 25px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+}
+
+//to remove the parallax-js unwanted modification
+.initial-position {
+  position: initial !important;
+  left: initial !important;
+  top: initial !important;
+}

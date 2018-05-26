@@ -1,5 +1,81 @@
-<p>
-  welcome works! <i class="fa fa-check"></i>
-  <a routerLink="/login" >Login</a>
-  <a routerLink="/search">Search quiz</a>
-</p>
+<div class="container-fluid main-page">
+  <div class="row logotype-row">
+    <div class="col-12 logotype-col">
+      <div class="row logomark initial-position" data-depth="0.1">
+        <div class="col-12">
+        </div>
+      </div>
+      <div class="row logo-text initial-position">
+        <div class="col-12">
+          GoQuizIt
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row arrow-down">
+    <div class="col-12">
+      <i class="fa fa-angle-down arrow-down">
+      </i>
+    </div>
+  </div>
+</div>
+<div class="container-fluid main-page-sections">
+  <div class="row spacer">
+    <div class="col-12"></div>
+  </div>
+  <div class="row banner login">
+    <div class="col-12">
+      <div class="row token-movement-bar">
+        <div class="col-12"></div>
+      </div>
+      <div class="row">
+        <div class="col-12 login-overlay">
+          <div class="row token-row">
+            <div class="col-12 token login-token initial-position" data-depth="0.1">
+              <i class="fa fa-users token-icon"></i>
+            </div>
+          </div>
+          <div class="row banner-content justify-content-around align-items-center">
+            <div class="col-8 banner-text">
+              <b>Zaloguj się</b>
+              <br/>
+              aby tworzyć <b>Quizy</b> i udostępniać unikalny kod
+            </div>
+            <div class="col-2 banner-btn">
+              <button type="button" routerLink="/login" class="btn btn-outline-light btn-xlg banner-btn">Zaloguj</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row spacer">
+    <div class="col-12"></div>
+  </div>
+  <div class="row banner quiz">
+    <div class="col-12">
+      <div class="row token-movement-bar">
+        <div class="col-12"></div>
+      </div>
+      <div class="row">
+        <div class="col-12 quiz-overlay">
+          <div class="row token-row">
+            <div class="col-12 token quiz-token initial-position" data-depth="0.1">
+              <i class="fa fa-list-alt token-icon"></i>
+            </div>
+          </div>
+          <div class="row banner-content justify-content-around align-items-center">
+            <div class="col-8 banner-text">
+              Posiadasz <b>kod Quizu</b>?
+              <br/>
+              możesz go rozwiązać bez potrzeby logowania
+            </div>
+            <div class="col-2 banner-btn">
+              <button type="button" routerLink="/search" class="btn btn-outline-light btn-xlg banner-btn">Wprowadź kod</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
