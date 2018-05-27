@@ -1,6 +1,26 @@
 <div>{{(question | async)?.value}}</div>
 
-<div *ngFor="let answer of answers | async ">
 
-  <button>{{answer.value}}</button>
-</div>
+
+<form [formGroup]="questionForm">
+
+  <div *ngFor="let answer of answers | async ">
+    <div>
+      <label>
+        <input type="radio" formControlName="answer" [value]="answer.answerId"><span>{{ answer.value  }}</span>
+      </label>
+    </div>
+  </div>
+
+  <!--<div *ngFor="let answer of questionForm.controls['answers'].controls; let i = index;">-->
+    <!--<div>-->
+      <!--<label>-->
+        <!--<input type="checkbox" [formControl]="answer"><span>{{ (answers|async)[i].value  }}</span>-->
+      <!--</label>-->
+    <!--</div>-->
+  <!--</div>-->
+</form>
+
+<button (click)="sendAnswer()">Wyślij odpowiedź</button>
+
+

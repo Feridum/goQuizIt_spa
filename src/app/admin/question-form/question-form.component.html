@@ -10,6 +10,7 @@
        *ngFor="let answer of formAnswers.controls; let i = index;">
     <div [formGroupName]="i">
       <input formControlName="value" placeholder="Item name">
+      <input formControlName="isPositive" type="checkbox">
     </div>
   </div>
 </form>

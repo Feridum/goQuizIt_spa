@@ -29,6 +29,7 @@ import { SearchQuizComponent } from './public/search-quiz/search-quiz.component'
 import { PlayerFormComponent } from './public/player-form/player-form.component';
 import { QuizSolveComponent } from './public/quiz-solve/quiz-solve.component';
 import { SingleQuestionComponent } from './public/single-question/single-question.component';
+import { FinishQuizComponent } from './public/finish-quiz/finish-quiz.component';
 
 
 
@@ -53,6 +54,7 @@ import { SingleQuestionComponent } from './public/single-question/single-questio
     PlayerFormComponent,
     QuizSolveComponent,
     SingleQuestionComponent,
+    FinishQuizComponent,
   ],
   imports: [
     BrowserModule,

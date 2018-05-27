@@ -13,6 +13,8 @@ export class RootEpics {
       createEpicMiddleware(this.authEpics.deleteAccessToken),
       createEpicMiddleware(this.playerEpics.saveQuiz),
       createEpicMiddleware(this.playerEpics.savePlayerQuestionAndAnswers),
+      createEpicMiddleware(this.playerEpics.clearStorage),
+      createEpicMiddleware(this.playerEpics.saveNewQuestion),
     ];
   }
 }
