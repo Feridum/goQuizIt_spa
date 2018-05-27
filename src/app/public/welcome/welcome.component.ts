@@ -22,7 +22,6 @@ export class WelcomeComponent implements OnInit, AfterContentInit {
     const tokenQuiz = document.getElementsByClassName('token-row').item(1);
     const parallaxTokenQuizInstance = new Parallax(tokenQuiz);
   }
-
 }
 
 

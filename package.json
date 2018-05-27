@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@angular/language-service": "^5.2.0",
+    "@nicky-lenaers/ngx-scroll-to": "^0.6.1",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^9.6.1",

@@ -29,7 +29,7 @@ import { SearchQuizComponent } from './public/search-quiz/search-quiz.component'
 import { PlayerFormComponent } from './public/player-form/player-form.component';
 import { QuizSolveComponent } from './public/quiz-solve/quiz-solve.component';
 import { SingleQuestionComponent } from './public/single-question/single-question.component';
-
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 
@@ -63,6 +63,7 @@ import { SingleQuestionComponent } from './public/single-question/single-questio
     NgReduxModule,
     NgReduxRouterModule,
     StoreModule,
+    ScrollToModule.forRoot(),
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]
