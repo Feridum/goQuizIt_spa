@@ -19,6 +19,7 @@ export interface IPlayer {
 }
 
 export interface IPlayerQuestion {
+  questionId: String,
   value: String,
 }
 

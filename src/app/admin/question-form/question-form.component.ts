@@ -60,7 +60,7 @@ export class QuestionFormComponent implements OnInit {
   createAnswer() {
     return this.fb.group({
       value: ['', Validators.required],
-      positive: [false]
+      isPositive: [false]
     });
   }
 
