@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {WelcomeComponent} from './public/welcome/welcome.component';
 import {LoginComponent} from './auth/login/login.component';
 import {AdminComponent} from './admin/admin.component';
-import {UnactiveQuizListComponent} from './admin/unactive-quiz-list/unactive-quiz-list.component';
+import {UnactiveQuizListComponent} from './admin/inactive-quiz-list/unactive-quiz-list.component';
 import {QuizFormComponent} from './admin/quiz-form/quiz-form.component';
 import {AuthGuardService} from './redux/auth/auth-guard.service';
 import {ActiveQuizListComponent} from './admin/active-quiz-list/active-quiz-list.component';

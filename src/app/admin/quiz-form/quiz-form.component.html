@@ -1,8 +1,8 @@
 <form [formGroup]="quizForm">
-      <input
-        formControlName="title"
-        type="text"
-        maxLength="25" />
+  <input
+    formControlName="title"
+    type="text"
+    maxLength="25"/>
 </form>
 
 <button class="btn" (click)="createQuiz()" [disabled]="quizForm.invalid">Create Quiz</button>

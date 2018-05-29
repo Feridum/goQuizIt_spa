@@ -1,23 +1,48 @@
-<form [formGroup]="questionForm">
-  <div formGroupName="question">
-    <input
-      formControlName="value"
-      type="text"
-      maxLength="25" />
-  </div>
+<div class="container-fluid form-background justify-content-center">
+  <div class="col-4 form-col align-self-center">
+    <div class="row form-center">
+      <div class="col-12 form-header-text">Dodaj pytanie</div>
+    </div>
+    <div class="row form-center">
+      <div class="col-12 inputs">
+        <form [formGroup]="questionForm">
+          <mat-form-field class="full-width">
+            <div formGroupName="question">
+              <textarea matInput
+                      formControlName="value"
+                      placeholder="Treść pytania"
+                      type="text"
+                      maxLength="25"
+                      class="text-area">
+              </textarea>
+            </div>
+          </mat-form-field>
+          <div formArrayName="answers" *ngFor="let answer of formAnswers.controls; let i = index;">
+            <div [formGroupName]="i">
+              <mat-form-field class="full-width">
+                <input matInput
+                       formControlName="value"
+                       placeholder="Odpowiedź"
+                       type="text"/>
+              </mat-form-field>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row form-center">
+      <div class="col-12 form-btn">
 
-  <div formArrayName="answers"
-       *ngFor="let answer of formAnswers.controls; let i = index;">
-    <div [formGroupName]="i">
-      <input formControlName="value" placeholder="Item name">
+        <button mat-button (click)="addAnswer()">+</button>
+
+        <button mat-button (click)="removeLastAnswer()">-</button>
+
+        <button mat-button (click)="submitForm()" [disabled]="questionForm.invalid">Add question</button>
+      </div>
     </div>
   </div>
-</form>
+</div>
 
 
-<button (click)="addAnswer()">+</button>
-
-<button (click)="removeLastAnswer()">-</button>
 
 
-<button class="btn" (click)="submitForm()" [disabled]="questionForm.invalid">Add question</button>

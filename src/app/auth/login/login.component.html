@@ -1,13 +1,43 @@
-<form [formGroup]="loginForm">
-  <input
-    formControlName="username"
-    type="text"
-    maxLength="25"/>
-
-  <input
-    formControlName="password"
-    type="password"
-    maxLength="25"/>
-</form>
-
-<button (click)="login()" [disabled]="loginForm.invalid">Log in</button>
+<app-header-bar></app-header-bar>
+<div class="container-fluid login-background align-items-center justify-content-center">
+  <div class="row login-row justify-content-around">
+    <div class="col-4 login-icon justify-content-center initial-position" data-depth="0.1">
+      <i class="fa fa-users user-icon"></i>
+    </div>
+    <div class="col-3 login-form initial-position">
+      <div class="row login-header-text justify-content-center">
+        Zaloguj
+      </div>
+      <div class="row login-inputs justify-content-center">
+        <div class="col-12">
+          <form class="form-group" [formGroup]="loginForm">
+            <mat-form-field class="full-width">
+              <input matInput
+                     placeholder="Nazwa użytkownika"
+                     formControlName="username"
+                     type="text"
+                     maxLength="25"
+                     class="login-input"/>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <input matInput
+                     placeholder="Hasło"
+                     formControlName="password"
+                     type="password"
+                     maxLength="25"
+                     class="login-input"/>
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <button mat-button (click)="login()" [disabled]="loginForm.invalid">Log in</button>
+          </div>
+        </div>
+      </div>
+      <div class="row remind-register-links">
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-bar></app-footer-bar>

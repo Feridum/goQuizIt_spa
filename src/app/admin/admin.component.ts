@@ -1,9 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {NgReduxRouter} from '@angular-redux/router';
+import {Component, OnInit} from '@angular/core';
 import {NgRedux} from '@angular-redux/store';
-import {createQuiz} from '../redux/quiz/quiz.actions';
 import {IAppState} from '../redux/state.interface';
-import {logout} from '../redux/auth/auth.actions';
 
 @Component({
   selector: 'app-admin',
@@ -12,7 +9,8 @@ import {logout} from '../redux/auth/auth.actions';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+  constructor(private ngRedux: NgRedux<IAppState>) {
+  }
 
   ngOnInit() {
   }

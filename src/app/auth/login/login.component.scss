@@ -1,0 +1,48 @@
+@import "../../../variables";
+
+.login-background {
+  display: flex;
+  height: calc(100vh - 120px);
+}
+
+.login-row {
+  min-height: 50vh;
+  width: 100%;
+}
+
+.login-icon {
+  background: url("../../../assets/images/backgrounds/token-background-dark.png") center no-repeat;
+  background-size: 40vh;
+}
+
+.user-icon {
+  margin-top: 15vh;
+  color: $primary;
+  font-size: 20vh;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: $primary;
+  color: #f0f0f095;
+}
+
+.full-width {
+  width: 80%;
+}
+
+.form-group {
+  text-align: center;
+}
+
+.login-header-text {
+  font-family: 'Open Sans', 'Arial', sans-serif;
+  font-weight: 300;
+  color: $primary-light;
+  font-size: 26px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+

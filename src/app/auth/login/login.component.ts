@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterContentInit, Component, OnInit} from '@angular/core';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
 import {FETCH_TOKEN_SUCCESS} from '../../redux/auth/auth.action-types';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {fetchToken} from '../../redux/auth/auth.actions';
+import * as Parallax from 'parallax-js';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
   async login() {
     const formValues = this.loginForm.value;
     await this.ngRedux.dispatch(fetchToken(formValues.username, formValues.password)).then((e: any) => {
@@ -32,4 +32,9 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+  // ngAfterContentInit() {
+  //   const tokenLogin = document.getElementsByClassName('login-row').item(0);
+  //   const parallaxTokenLoginInstance = new Parallax(tokenLogin);
+  // }
 }

@@ -2,16 +2,17 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs float-sm-left">
       <li class="nav-item">
-        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin" >Unactive quiz</a>
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"
+           routerLink="/admin">Nieaktywne</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLinkActive]="['active']"  routerLink="/admin/active-quiz" >Active quiz</a>
+        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/admin/active-quiz">Aktywne</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/admin/finished-quiz" >Finished quiz</a>
+        <a class="nav-link" [routerLinkActive]="['active']" routerLink="/admin/finished-quiz">Zakończone</a>
       </li>
     </ul>
-    <button class="btn btn-danger float-sm-right btn-sm" (click)="logout()">Logout</button>
+    <button class="btn btn-danger float-sm-right btn-sm" (click)="logout()">Wyloguj</button>
   </div>
   <div class="card-body">
     <router-outlet></router-outlet>

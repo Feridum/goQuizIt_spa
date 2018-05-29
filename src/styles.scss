@@ -2,3 +2,51 @@
 @import 'variables';
 @import '../node_modules/font-awesome/scss/font-awesome';
 @import '../node_modules/bootstrap/scss/bootstrap';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-input-placeholder {
+  color: #f0f0f099;
+}
+
+.mat-form-field-underline {
+  background-color: #f0f0f099;
+}
+
+.mat-input-container.mat-focused {
+  color: $secondary-light;
+}
+
+.mat-button {
+  background-color: $primary-light;
+  color: $secondary-light;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-height: 100%;
+}
+
+.card {
+  padding-bottom: 40px;
+  border: none;
+}
+
+//to remove the parallax-js unwanted modification
+.initial-position {
+  position: initial !important;
+  left: initial !important;
+  top: initial !important;
+}
+
