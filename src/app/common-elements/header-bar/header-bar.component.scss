@@ -1,0 +1,29 @@
+@import '../../../variables';
+
+.header-bar {
+  background-color: $primary-light;
+  height: 60px;
+}
+
+.logotype {
+  margin: 0 40px;
+  cursor: pointer;
+}
+
+.logomark {
+  margin-top: 5px;
+  background: url("../../../assets/images/logos/GoQuizIt_Logo_Inverted.png") no-repeat;
+  background-size: 45px;
+  width: 55px;
+  height: 55px;
+}
+
+.logo-text {
+  position: absolute;
+  margin-left: 60px;
+  margin-top: 7px;
+  font-family: "Palatino Linotype", serif;
+  font-size: 30px;
+  color: white;
+  letter-spacing: 4px;
+}
