@@ -1,22 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {select} from '@angular-redux/store';
+import {NgRedux, select} from '@angular-redux/store';
+import {IAppState} from '../../redux/state.interface';
+import {ActivatedRoute, Router} from '@angular/router';
+import {getQuestions} from '../../redux/question/questions.actions';
+import {IQuizPlayer} from '../../redux/quiz/quiz.interface';
+import {getPlayers} from '../../redux/quiz/quiz.actions';
 
-
-const mockData = [
-  {
-    id: '1',
-    firstName: 'jon',
-    lastName: 'doe',
-    score: '10'
-  },
-  {
-    id: '2',
-    firstName: 'jane',
-    lastName: 'foe',
-    score: '0'
-  }
-]
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
@@ -24,11 +14,17 @@ const mockData = [
 })
 export class PlayerListComponent implements OnInit {
 
-  @select(['router']) route: Observable<string>;
-  playersList = mockData
-  constructor() { }
+  quizId: string;
+  playersList: IQuizPlayer[];
+  constructor(private ngRedux: NgRedux<IAppState>, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.quizId = this.route.snapshot.params['quizId'];
+    if (this.quizId) {
+      this.ngRedux.dispatch(getPlayers(this.quizId)).then((e:any)=>{
+        this.playersList = e.payload;
+      });
+    }
   }
 
 }

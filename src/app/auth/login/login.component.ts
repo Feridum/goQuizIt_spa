@@ -14,6 +14,7 @@ import {fetchToken} from '../../redux/auth/auth.actions';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  canNavigate: Boolean = false;
   constructor(private ngRedux: NgRedux<IAppState>, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -28,8 +29,12 @@ export class LoginComponent implements OnInit {
     const formValues = this.loginForm.value;
     await this.ngRedux.dispatch(fetchToken(formValues.username, formValues.password)).then((e: any) => {
       if (!e.error) {
-        this.router.navigate(['/admin']);
+        this.canNavigate = true;
       }
     });
+
+    if (this.canNavigate) {
+      this.router.navigate(['/admin']);
+    }
   }
 }

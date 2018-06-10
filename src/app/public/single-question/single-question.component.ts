@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 import {NgRedux, select, select$} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
@@ -15,13 +15,13 @@ import {Subscription} from 'rxjs/Subscription';
   templateUrl: './single-question.component.html',
   styleUrls: ['./single-question.component.scss']
 })
-export class SingleQuestionComponent implements OnInit {
+export class SingleQuestionComponent implements OnInit, OnDestroy {
 
   @select(['player', 'question']) question: Observable<IPlayerQuestion>;
   @select$(['player', 'answers'], mapToArray) answers: Observable<IPlayerAnswer[]>;
 
-
   questionId: String;
+  questionType: string;
   playerId: String;
   questionForm: FormGroup;
 
@@ -32,14 +32,16 @@ export class SingleQuestionComponent implements OnInit {
   constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder,  private router: Router) { }
 
   ngOnInit() {
-    this.createForm();
-    this.answerSubscription = this.answers.subscribe((answers: IPlayerAnswer[]) => {
-      answers.map((answer: IPlayerAnswer) => this.addAnswer(answer.answerId, answer.value));
-    });
 
     this.questionSubscription = this.question.subscribe( (question: IPlayerQuestion) => {
       this.questionId = question.questionId;
+      this.questionType = question.type;
+      this.createForm();
     } );
+
+    this.answerSubscription = this.answers.subscribe((answers: IPlayerAnswer[]) => {
+      answers.map((answer: IPlayerAnswer) => this.addAnswer(answer.answerId, answer.value));
+    });
 
     this.playerSubscription = this.ngRedux.select(['player', 'playerId']).subscribe((playerId: String) => this.playerId = playerId);
   }
@@ -54,27 +56,38 @@ export class SingleQuestionComponent implements OnInit {
 
   addAnswer(value, label) {
     const answers = this.questionForm.get('answers') as FormArray;
-    answers.push(this.fb.control(false));
+    answers.push(this.fb.group({
+      value: value,
+      label: label,
+      checked: false
+    }));
   }
 
   sendAnswer() {
-    console.log('test', this.questionForm);
-    const id = [
-      this.questionForm.value.answer
-    ];
+    let id = [];
+    if (this.questionType === 'MULTIPLE_CHOICE') {
+      id = this.questionForm.value.answers.map(answer => answer.checked && answer.value).filter(Boolean);
+    } else {
+      id = [
+        this.questionForm.value.answer
+      ];
+    }
 
-    this.ngRedux.dispatch(addPlayerAnswer(this.playerId, this.questionId, id)).then(({payload}: any) => {
-      console.log(payload);
-      if (payload.isFinish) {
-        this.playerSubscription.unsubscribe();
-        this.answerSubscription.unsubscribe();
-        this.questionSubscription.unsubscribe();
-        this.ngRedux.dispatch(finishPlayerQuiz());
+    console.log(id);
+
+    this.ngRedux.dispatch(addPlayerAnswer(this.playerId, this.questionId, id)).then((response: any) => {
+      console.log(response.payload);
+      if (response.payload.isFinish) {
         this.router.navigate(['/finish']);
-      } else {
-        this.ngRedux.dispatch(setNewQuestion(payload));
+      } else if (!response.error) {
+        this.ngRedux.dispatch(setNewQuestion(response.payload));
       }
     });
   }
 
+  ngOnDestroy() {
+    this.playerSubscription.unsubscribe();
+    this.answerSubscription.unsubscribe();
+    this.questionSubscription.unsubscribe();
+  }
 }

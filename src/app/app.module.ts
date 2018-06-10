@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgReduxRouterModule} from '@angular-redux/router';
 import {NgReduxModule} from '@angular-redux/store';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from './redux/module';
 import { LoginComponent } from './auth/login/login.component';
@@ -30,6 +30,7 @@ import { PlayerFormComponent } from './public/player-form/player-form.component'
 import { QuizSolveComponent } from './public/quiz-solve/quiz-solve.component';
 import { SingleQuestionComponent } from './public/single-question/single-question.component';
 import { FinishQuizComponent } from './public/finish-quiz/finish-quiz.component';
+import { QuizResultComponent } from './admin/quiz-result/quiz-result.component';
 
 
 
@@ -55,6 +56,7 @@ import { FinishQuizComponent } from './public/finish-quiz/finish-quiz.component'
     QuizSolveComponent,
     SingleQuestionComponent,
     FinishQuizComponent,
+    QuizResultComponent,
   ],
   imports: [
     BrowserModule,
