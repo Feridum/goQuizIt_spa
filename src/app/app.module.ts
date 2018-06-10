@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgReduxRouterModule} from '@angular-redux/router';
 import {NgReduxModule} from '@angular-redux/store';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {StoreModule} from './redux/module';
 import { LoginComponent } from './auth/login/login.component';

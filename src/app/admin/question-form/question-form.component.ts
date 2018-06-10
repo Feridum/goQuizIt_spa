@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
 import {CREATE_QUESTION_SUCCESS, UPDATE_QUESTION_SUCCESS} from '../../redux/question/questions.action-types';
 import 'rxjs/add/operator/filter';
 import {IQuestion} from '../../redux/question/questions.interface';
@@ -14,19 +14,28 @@ const minAnswersLength = 2;
 const maxAnswersLength = 4;
 
 
-  @Component({
+@Component({
   selector: 'app-question-form',
   templateUrl: './question-form.component.html',
-  styleUrls: ['./question-form.component.scss']
+  styleUrls: ['./question-form.component.scss'],
 })
 export class QuestionFormComponent implements OnInit {
 
+  quizTypes = [
+    {value: 'SINGLE_CHOICE', label: 'Pojedynczego wyboru'},
+    {value: 'MULTIPLE_CHOICE', label: 'Wielokrotnego wyboru'},
+    {value: 'OPEN', label: 'Otwarte'},
+  ];
+
+  radioCheckedIndex = 0;
 
   questionForm: FormGroup;
   answers: FormArray;
   quizId: string;
   questionId: string;
-  constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private location: Location, private route: ActivatedRoute) { }
+
+  constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private location: Location, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.quizId = this.route.snapshot.params['quizId'];
@@ -59,7 +68,7 @@ export class QuestionFormComponent implements OnInit {
 
   createAnswer() {
     return this.fb.group({
-      value: ['', Validators.required],
+      value: [''],
       isPositive: [false]
     });
   }
@@ -78,19 +87,43 @@ export class QuestionFormComponent implements OnInit {
     }
   }
 
-  get formAnswers() { return <FormArray>this.questionForm.get('answers'); }
+  get formAnswers() {
+    return <FormArray>this.questionForm.get('answers');
+  }
 
+  onSelectionChange(index) {
+    this.radioCheckedIndex = index;
+  }
 
   submitForm() {
     console.log(this.questionForm.value);
+
+    let data = {
+      'question' : this.questionForm.value.question,
+      'answers': []
+    };
+
+    const questionType = this.questionForm.value.question.type;
+    if (questionType === 'MULTIPLE_CHOICE') {
+      data = {
+        ...data,
+        answers:  this.questionForm.value.answers
+      };
+    } else if (questionType === 'SINGLE_CHOICE') {
+      data = {
+        ...data,
+        answers:  this.questionForm.value.answers.map((answer, i) => ({value: answer.value, isPositive: i === this.radioCheckedIndex}))
+      };
+    }
+
     if (!this.questionId) {
-      this.ngRedux.dispatch(createQuestion(this.quizId, this.questionForm.value)).then((e: any) => {
+      this.ngRedux.dispatch(createQuestion(this.quizId, data)).then((e: any) => {
         if (!e.error) {
           this.location.back();
         }
       });
     } else {
-      this.ngRedux.dispatch(updateQuestion(this.quizId, this.questionId, this.questionForm.value)).then((e: any) => {
+      this.ngRedux.dispatch(updateQuestion(this.quizId, this.questionId, data)).then((e: any) => {
         if (!e.error) {
           this.location.back();
         }
