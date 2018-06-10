@@ -28,7 +28,7 @@ export class PlayerFormComponent implements OnInit {
       mail: [''],
       telephoneNumber: [''],
     });
-    this.quizId = this.route.snapshot.params['quizId'];
+    ``
 
     console.log(this.playerForm, this.quizId);
   }

@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let result of results | async ">
+    <tr>
+      <td>{{result.player.name}}</td>
+      <td>{{result.player.surname}}</td>
+      <td>{{result.result}}</td>
+    </tr>
+    <tr>
+      <ng-container *ngFor="let answer of result.answers">
+        <div>
+            <td>{{answer.question}}</td>
+            <td>
+              <span *ngFor="let playerAnswer of answer.playerAnswers">{{playerAnswer}}&nbsp;</span>
+            </td>
+        </div>
+      </ng-container>
+    </tr>
+  </ng-container>
+
+  </tbody>
+</table>

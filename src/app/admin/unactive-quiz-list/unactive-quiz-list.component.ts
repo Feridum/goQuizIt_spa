@@ -7,9 +7,6 @@ import {createQuiz, getInactiveQuizList} from '../../redux/quiz/quiz.actions';
 import {IAppState} from '../../redux/state.interface';
 import {Subscription} from 'rxjs/Subscription';
 
-
-
-
 @Component({
   selector: 'app-unactive-quiz-list',
   templateUrl: './unactive-quiz-list.component.html',
@@ -18,7 +15,6 @@ import {Subscription} from 'rxjs/Subscription';
 export class UnactiveQuizListComponent implements OnInit {
 
   @select$(['quiz', 'inactiveQuizList'], mapToArray) inactiveQuizList: Observable<IUnactiveQuiz[]>;
-
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
   ngOnInit() {

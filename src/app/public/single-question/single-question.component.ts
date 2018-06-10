@@ -58,7 +58,6 @@ export class SingleQuestionComponent implements OnInit {
   }
 
   sendAnswer() {
-    console.log('test', this.questionForm);
     const id = [
       this.questionForm.value.answer
     ];

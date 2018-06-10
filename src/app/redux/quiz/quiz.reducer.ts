@@ -1,14 +1,18 @@
 import {IQuizState, IUnactiveQuiz} from './quiz.interface';
 import {
-  CREATE_QUIZ_SUCCESS, GET_ACTIVE_QUIZ_LIST_SUCCESS, GET_INACTIVE_QUIZ_LIST_SUCCESS, SET_QUIZ_ACTIVE_SUCCESS,
+  CREATE_QUIZ_SUCCESS, FETCH_PLAYERS_LIST_SUCCESS, GET_ACTIVE_QUIZ_LIST_SUCCESS, GET_FINISHED_QUIZ_LIST_SUCCESS,
+  GET_INACTIVE_QUIZ_LIST_SUCCESS, GET_QUIZ_RESULTS_SUCCESS, SET_QUIZ_ACTIVE_SUCCESS,
+  SET_QUIZ_FINISHED_SUCCESS,
   UPDATE_QUIZ_SUCCESS
 } from './quiz.action-types';
 import { omit } from 'lodash';
 import {LOGOUT} from '../auth/auth.action-types';
+import {FETCH_QUESTIONS_LIST_SUCCESS} from '../question/questions.action-types';
 const initialState: IQuizState = {
   inactiveQuizList: null,
   activeQuizList: null,
   finishedQuizList: null,
+  results: null
 };
 
 export const quizReducer = (state: IQuizState = initialState, action) => {
@@ -23,6 +27,13 @@ export const quizReducer = (state: IQuizState = initialState, action) => {
     [GET_ACTIVE_QUIZ_LIST_SUCCESS]: (state, {payload}) => ({
       ...state,
       activeQuizList: payload.reduce(function(map, obj) {
+        map[obj.id] = obj;
+        return map;
+      }, {})
+    }),
+    [GET_FINISHED_QUIZ_LIST_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      finishedQuizList: payload.reduce(function(map, obj) {
         map[obj.id] = obj;
         return map;
       }, {})
@@ -53,6 +64,23 @@ export const quizReducer = (state: IQuizState = initialState, action) => {
         }
       },
       inactiveQuizList : omit(state.inactiveQuizList, payload.id)
+    }),
+    [SET_QUIZ_FINISHED_SUCCESS] : (state, {payload}) => ({
+      ...state,
+      finishedQuizList: {
+        ...state.finishedQuizList,
+        [payload.id] : {
+          ...payload,
+        }
+      },
+      activeQuizList : omit(state.activeQuizList, payload.id)
+    }),
+    [GET_QUIZ_RESULTS_SUCCESS]: (state, {payload, meta}) => ({
+      ...state,
+      results: {
+        ...(state.results || [] ) ,
+        [meta.quizId] : payload
+      }
     }),
     [LOGOUT]: (state, {payload}) => ({
       ...state,
