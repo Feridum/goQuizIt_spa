@@ -44,5 +44,6 @@ export interface IQuizResult {
 export interface IQuizResultAnswer {
   question: string;
   playerAnswers: string[];
+  positiveAnswers: string[];
 }
 export type IQuizStatus = 'INACTIVE' | 'ACTIVE' | 'FINISHED';
