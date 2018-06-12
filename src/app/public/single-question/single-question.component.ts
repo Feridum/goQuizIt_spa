@@ -6,7 +6,7 @@ import {mapToArray} from '../../redux/quiz/quiz.helpers';
 import {IPlayerAnswer, IPlayerQuestion} from '../../redux/player/player.interface';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IAppState} from '../../redux/state.interface';
-import {addPlayerAnswer, finishPlayerQuiz, setNewQuestion} from '../../redux/player/player.actions';
+import {addPlayerAnswer, addPlayerOpenAnswer, finishPlayerQuiz, setNewQuestion} from '../../redux/player/player.actions';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 
@@ -65,6 +65,7 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
 
   sendAnswer() {
     let id = [];
+    let postPlayerAnswer = addPlayerAnswer;
     if (this.questionType === 'MULTIPLE_CHOICE') {
       id = this.questionForm.value.answers.map(answer => answer.checked && answer.value).filter(Boolean);
     } else {
@@ -73,9 +74,11 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
       ];
     }
 
-    console.log(id);
+    if(this.questionType === 'OPEN') {
+      postPlayerAnswer = addPlayerOpenAnswer;
+    }
 
-    this.ngRedux.dispatch(addPlayerAnswer(this.playerId, this.questionId, id)).then((response: any) => {
+    this.ngRedux.dispatch(postPlayerAnswer(this.playerId, this.questionId, id)).then((response: any) => {
       console.log(response.payload);
       if (response.payload.isFinish) {
         this.router.navigate(['/finish']);

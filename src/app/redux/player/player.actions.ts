@@ -49,6 +49,18 @@ export const addPlayerAnswer = (playerId, questionId, id): IRSAAction => {
   };
 };
 
+export const addPlayerOpenAnswer = (playerId, questionId, value): IRSAAction => {
+  return {
+    [RSAA]: {
+      endpoint: `${API_URL}/players/${playerId}/question/${questionId}/open/answers`,
+      method: 'POST',
+      body: {value: value[0]},
+      types: [ADD_PLAYER_ANSWER_REQUEST, ADD_PLAYER_ANSWER_SUCCESS, ADD_PLAYER_ANSWER_FAILURE]
+    }
+  };
+};
+
+
 export const finishPlayerQuiz = () => ({
   type: FINISH_PLAYER_QUIZ
 });
