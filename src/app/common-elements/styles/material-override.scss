@@ -1,0 +1,65 @@
+@import '../../../variables.scss';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-radio-container {
+  position: absolute !important;
+  right: 0;
+}
+
+.mat-radio-outer-circle {
+  border-color: $primary-light;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: $primary-light;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $primary-light;
+}
+
+.mat-checkbox-inner-container {
+  position: absolute !important;
+  right: 0;
+}
+
+.mat-accent .mat-input-element {
+  caret-color: white;
+}
+
+.mat-checkbox-frame {
+  border-color: $primary-light;
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: $primary-light;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: $primary-light;
+}
+
+.mat-input-placeholder {
+  color: #f0f0f099;
+}
+
+.mat-select-value {
+  color: #f0f0f099;
+}
+
+.mat-select-arrow {
+  color: #f0f0f099;
+}
+
+.mat-form-field-underline {
+  background-color: #f0f0f099;
+}
+
+.mat-input-container.mat-focused {
+  color: $secondary-light;
+}
+
+.mat-button {
+  background-color: $primary-light;
+  color: $secondary-light;
+}
