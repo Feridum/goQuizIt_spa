@@ -1,18 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, FormsModule, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
-import {v4 as uuid} from 'uuid';
-import {CREATE_QUESTION_SUCCESS, UPDATE_QUESTION_SUCCESS} from '../../redux/question/questions.action-types';
 import 'rxjs/add/operator/filter';
 import {IQuestion} from '../../redux/question/questions.interface';
 import {createQuestion, getQuestions, updateQuestion} from '../../redux/question/questions.actions';
 
 const minAnswersLength = 2;
 const maxAnswersLength = 4;
-
 
 @Component({
   selector: 'app-question-form',
@@ -99,7 +96,7 @@ export class QuestionFormComponent implements OnInit {
     console.log(this.questionForm.value);
 
     let data = {
-      'question' : this.questionForm.value.question,
+      'question': this.questionForm.value.question,
       'answers': []
     };
 
@@ -107,12 +104,15 @@ export class QuestionFormComponent implements OnInit {
     if (questionType === 'MULTIPLE_CHOICE') {
       data = {
         ...data,
-        answers:  this.questionForm.value.answers
+        answers: this.questionForm.value.answers
       };
     } else if (questionType === 'SINGLE_CHOICE') {
       data = {
         ...data,
-        answers:  this.questionForm.value.answers.map((answer, i) => ({value: answer.value, isPositive: i === this.radioCheckedIndex}))
+        answers: this.questionForm.value.answers.map((answer, i) => ({
+          value: answer.value,
+          isPositive: i === this.radioCheckedIndex
+        }))
       };
     }
 

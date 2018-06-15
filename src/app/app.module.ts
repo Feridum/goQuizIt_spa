@@ -32,6 +32,9 @@ import {FooterBarComponent} from './common-elements/footer-bar/footer-bar.compon
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BackToTopComponent} from './common-elements/back-to-top/back-to-top.component';
 import {CenterFormComponent} from './common-elements/center-form/center-form.component';
@@ -78,6 +81,9 @@ import {QuizResultComponent} from './admin/quiz-result/quiz-result.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCheckboxModule,
     BrowserAnimationsModule,
   ],
   providers: [AuthGuardService],

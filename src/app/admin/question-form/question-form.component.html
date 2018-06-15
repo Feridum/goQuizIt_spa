@@ -1,32 +1,60 @@
 <div class="container-fluid form-background justify-content-center">
-  <div class="col-4 form-col align-self-center">
+  <div class="col-4 form-col center-container align-self-center">
     <div class="row form-center">
       <div class="col-12 form-header-text">Dodaj pytanie</div>
     </div>
     <div class="row form-center">
       <div class="col-12 inputs">
         <form [formGroup]="questionForm">
-          <mat-form-field class="full-width">
-            <div formGroupName="question">
+          <div formGroupName="question">
+            <mat-form-field class="full-width">
               <textarea matInput
-                      formControlName="value"
-                      placeholder="Treść pytania"
-                      type="text"
-                      maxLength="25"
-                      class="text-area">
+                        formControlName="value"
+                        placeholder="Treść pytania"
+                        type="text"
+                        maxLength="25"
+                        class="text-area">
               </textarea>
-            </div>
-          </mat-form-field>
-          <div formArrayName="answers" *ngFor="let answer of formAnswers.controls; let i = index;">
-            <div [formGroupName]="i">
-              <mat-form-field class="full-width">
-                <input matInput
-                       formControlName="value"
-                       placeholder="Odpowiedź"
-                       type="text"/>
-              </mat-form-field>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Rodzaj pytania" id="type" formControlName="type" class="type-selection-panel">
+                <mat-option *ngFor="let type of quizTypes" [value]="type.value">{{ type.label }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div *ngIf="questionForm.value.question.type == 'SINGLE_CHOICE'">
+            <div formArrayName="answers" *ngFor="let answer of formAnswers.controls; let i = index;">
+              <div [formGroupName]="i">
+                <mat-form-field class="full-width">
+                  <mat-radio-button name="isPositive" type="radio" [value]="i" [checked]="radioCheckedIndex==i"
+                                    (change)="onSelectionChange(i)">
+                    <input matInput
+                           formControlName="value"
+                           placeholder="Odpowiedź"
+                           type="text"/>
+                  </mat-radio-button>
+                </mat-form-field>
+              </div>
             </div>
           </div>
+
+          <div *ngIf="questionForm.value.question.type == 'MULTIPLE_CHOICE'">
+            <div formArrayName="answers"
+                 *ngFor="let answer of formAnswers.controls; let i = index;">
+              <div [formGroupName]="i">
+                <mat-form-field class="full-width">
+                  <mat-checkbox [formControlName]="value">
+                    <input matInput
+                           formControlName="value"
+                           placeholder="Odpowiedź"
+                           type="text"/>
+                  </mat-checkbox>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>
@@ -37,12 +65,9 @@
 
         <button mat-button (click)="removeLastAnswer()">-</button>
 
-        <button mat-button (click)="submitForm()" [disabled]="questionForm.invalid">Add question</button>
+        <button mat-button (click)="submitForm()" [disabled]="questionForm.invalid">Zatwierdź</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
 

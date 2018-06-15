@@ -1,8 +1,26 @@
-<form [formGroup]="quizForm">
-  <input
-    formControlName="title"
-    type="text"
-    maxLength="25"/>
-</form>
-
-<button class="btn" (click)="createQuiz()" [disabled]="quizForm.invalid">Create Quiz</button>
+<div class="container-fluid form-background justify-content-center">
+  <div class="col-3 form-col align-self-center">
+    <div class="row form-center">
+      <div class="col-12 form-header-text">Wybierz nazwę Quizu</div>
+    </div>
+    <div class="row form-center align-items-center">
+      <div class="col-12 inputs">
+        <form [formGroup]="quizForm">
+          <mat-form-field class="full-width">
+            <input matInput
+                   formControlName="title"
+                   placeholder="Nazwa Quizu"
+                   type="text"
+                   maxLength="25"
+                   class="text-area"/>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div class="row form-center">
+      <div class="col-12 form-btn">
+        <button mat-button (click)="createQuiz()" [disabled]="quizForm.invalid">Zatwierdź</button>
+      </div>
+    </div>
+  </div>
+</div>
