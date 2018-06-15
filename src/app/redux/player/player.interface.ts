@@ -19,10 +19,12 @@ export interface IPlayer {
 }
 
 export interface IPlayerQuestion {
+  questionId: String,
   value: String,
+  type: string,
 }
 
 export interface IPlayerAnswer {
-  answerId: String,
+  answerId: string,
   value: String,
 }

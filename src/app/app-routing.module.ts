@@ -16,12 +16,15 @@ import {SinglePlayerComponent} from './admin/single-player/single-player.compone
 import {SearchQuizComponent} from './public/search-quiz/search-quiz.component';
 import {PlayerFormComponent} from './public/player-form/player-form.component';
 import {SingleQuestionComponent} from './public/single-question/single-question.component';
+import {FinishQuizComponent} from './public/finish-quiz/finish-quiz.component';
+import {QuizResultComponent} from './admin/quiz-result/quiz-result.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
   {path: 'search', component: SearchQuizComponent},
   {path: 'enroll/:quizId', component: PlayerFormComponent},
   {path: 'question', component: SingleQuestionComponent},
+  {path: 'finish', component: FinishQuizComponent},
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent, canActivate: [ AuthGuardService ], children: [
       {path: '', component: QuizListComponent, children: [
@@ -33,8 +36,7 @@ const routes: Routes = [
             ]},
           {path: 'finished-quiz', children: [
               {path: '', component: FinishedQuizListComponent},
-              {path: ':quizId/players', component: PlayerListComponent},
-              {path: ':quizId/players/:playerId', component: SinglePlayerComponent},
+              {path: ':quizId/results', component: QuizResultComponent},
               ]},
         ]},
       {path: 'add-quiz', component: QuizFormComponent},

@@ -3,6 +3,7 @@ export interface IQuizState {
   inactiveQuizList:  {[id: string]: IUnactiveQuiz};
   activeQuizList: {[id: string]: IActiveQuiz};
   finishedQuizList: {[id: string]: IFinishedQuiz};
+  results: {[id: string]: IQuizResult};
 }
 
 
@@ -25,4 +26,24 @@ export interface IFinishedQuiz {
   state: IQuizStatus;
 }
 
+export interface IQuizPlayer {
+  name: string;
+  surname: string;
+  telephoneNumber: string;
+  mail: string;
+}
+
+export interface IQuizResult {
+  player: IQuizPlayer;
+  result: string;
+  quiz: string;
+  answers: IQuizResultAnswer[];
+}
+
+
+export interface IQuizResultAnswer {
+  question: string;
+  playerAnswers: string[];
+  positiveAnswers: string[];
+}
 export type IQuizStatus = 'INACTIVE' | 'ACTIVE' | 'FINISHED';

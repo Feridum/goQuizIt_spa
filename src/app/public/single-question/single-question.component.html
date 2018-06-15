@@ -1,6 +1,38 @@
 <div>{{(question | async)?.value}}</div>
 
-<div *ngFor="let answer of answers | async ">
+<form [formGroup]="questionForm">
+  <div *ngIf="questionType == 'SINGLE_CHOICE'">
+    Wybierz jedną odpowiedz
+    <div *ngFor="let answer of answers | async ">
+      <div>
+        <label>
+          <input type="radio" formControlName="answer" [value]="answer.answerId"><span>{{ answer.value  }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
 
-  <button>{{answer.value}}</button>
-</div>
+  <div *ngIf="questionType == 'MULTIPLE_CHOICE'">
+    Wybierz jedną lub wiecej odpowiedzi
+    <div formArrayName="answers" *ngFor="let answer of questionForm.controls['answers'].controls; let i = index;">
+      <div [formGroupName]="i">
+      <div>
+        <label>
+          <input formControlName="checked" type="checkbox"><span>{{ (answers|async)[i].value  }}</span>
+        </label>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="questionType == 'OPEN'">
+    <input
+      formControlName="answer"
+      type="text"
+    />
+  </div>
+</form>
+
+<button (click)="sendAnswer()">Wyślij odpowiedź</button>
+
+
