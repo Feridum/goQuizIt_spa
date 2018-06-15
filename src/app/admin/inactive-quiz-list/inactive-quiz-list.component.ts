@@ -1,21 +1,22 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NgRedux, select, select$} from '@angular-redux/store';
+import {Component, OnInit} from '@angular/core';
+import {NgRedux, select$} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
 import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 import {mapToArray} from '../../redux/quiz/quiz.helpers';
-import {createQuiz, getInactiveQuizList} from '../../redux/quiz/quiz.actions';
+import {getInactiveQuizList} from '../../redux/quiz/quiz.actions';
 import {IAppState} from '../../redux/state.interface';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
-  selector: 'app-unactive-quiz-list',
-  templateUrl: './unactive-quiz-list.component.html',
-  styleUrls: ['./unactive-quiz-list.component.scss']
+  selector: 'app-inactive-quiz-list',
+  templateUrl: './inactive-quiz-list.component.html',
+  styleUrls: ['./inactive-quiz-list.component.scss']
 })
-export class UnactiveQuizListComponent implements OnInit {
+export class InactiveQuizListComponent implements OnInit {
 
   @select$(['quiz', 'inactiveQuizList'], mapToArray) inactiveQuizList: Observable<IUnactiveQuiz[]>;
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+
+  constructor(private ngRedux: NgRedux<IAppState>) {
+  }
 
   ngOnInit() {
     this.inactiveQuizList.subscribe(quizList => {

@@ -1,4 +1,3 @@
-
 <td>{{quiz.title}}</td>
 <td>{{quiz.state}}</td>
 <td *ngIf="quiz.state === 'INACTIVE'">
@@ -13,16 +12,10 @@
 
 <td *ngIf="quiz.state === 'ACTIVE'">
   <button (click)="setQuizFinished()">Finish</button>
-</td>
-
-<td *ngIf="quiz.state == 'ACTIVE'">
   <a [routerLink]="[route | async, quiz.id, 'players']">Players list</a>
 </td>
 
 <td *ngIf="quiz.state == 'FINISHED'">
   <a [routerLink]="[route | async, quiz.id, 'results']">Results</a>
-</td>
-
-<td *ngIf="quiz.state == 'FINISHED'">
   <a [href]="quizPdfUrl" target="_blank">PDF</a>
 </td>

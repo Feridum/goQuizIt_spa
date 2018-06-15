@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {WelcomeComponent} from './public/welcome/welcome.component';
 import {LoginComponent} from './auth/login/login.component';
 import {AdminComponent} from './admin/admin.component';
-import {UnactiveQuizListComponent} from './admin/inactive-quiz-list/unactive-quiz-list.component';
+import {InactiveQuizListComponent} from './admin/inactive-quiz-list/inactive-quiz-list.component';
 import {QuizFormComponent} from './admin/quiz-form/quiz-form.component';
 import {AuthGuardService} from './redux/auth/auth-guard.service';
 import {ActiveQuizListComponent} from './admin/active-quiz-list/active-quiz-list.component';
@@ -26,19 +26,26 @@ const routes: Routes = [
   {path: 'question', component: SingleQuestionComponent},
   {path: 'finish', component: FinishQuizComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminComponent, canActivate: [ AuthGuardService ], children: [
-      {path: '', component: QuizListComponent, children: [
-          {path: '', component: UnactiveQuizListComponent},
-          {path: 'active-quiz', children: [
+  {
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], children: [
+      {
+        path: '', component: QuizListComponent, children: [
+          {path: '', component: InactiveQuizListComponent},
+          {
+            path: 'active-quiz', children: [
               {path: '', component: ActiveQuizListComponent},
               {path: ':quizId/players', component: PlayerListComponent},
               {path: ':quizId/players/:playerId', component: SinglePlayerComponent},
-            ]},
-          {path: 'finished-quiz', children: [
+            ]
+          },
+          {
+            path: 'finished-quiz', children: [
               {path: '', component: FinishedQuizListComponent},
               {path: ':quizId/results', component: QuizResultComponent},
-              ]},
-        ]},
+            ]
+          },
+        ]
+      },
       {path: 'add-quiz', component: QuizFormComponent},
       {path: 'edit-quiz/:quizId', component: QuizFormComponent},
       {path: 'quiz/:quizId/questions', component: QuestionListComponent},
@@ -52,4 +59,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
