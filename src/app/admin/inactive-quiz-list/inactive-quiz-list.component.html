@@ -11,7 +11,9 @@
     <tr app-single-quiz-list-element *ngFor="let quiz of inactiveQuizList | async " [quiz]="quiz"></tr>
   <tr>
     <td  colspan="3">
-      <a routerLink="/admin/add-quiz" >New Quiz</a>
+      <a routerLink="/admin/add-quiz">
+        <i class="fa fa-plus-circle new-quiz-btn" title="Dodaj nowe pytanie"></i>
+      </a>
     </td>
   </tr>
   </tbody>
