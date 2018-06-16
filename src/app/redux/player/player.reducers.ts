@@ -1,5 +1,10 @@
 import {IPlayerState} from './player.interface';
-import {CREATE_PLAYER_SUCCESS, FETCH_QUIZ_BY_TOKEN_SUCCESS, FINISH_PLAYER_QUIZ, SET_NEW_QUESTION} from './player.action-types';
+import {
+  CREATE_PLAYER_SUCCESS,
+  FETCH_QUIZ_BY_TOKEN_SUCCESS,
+  FINISH_PLAYER_QUIZ,
+  SET_NEW_QUESTION
+} from './player.action-types';
 
 const initialState: IPlayerState = {
   quiz: JSON.parse(localStorage.getItem('player_quiz')),

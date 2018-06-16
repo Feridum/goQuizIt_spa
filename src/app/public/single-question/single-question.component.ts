@@ -1,12 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
 import {NgRedux, select, select$} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
 import {mapToArray} from '../../redux/quiz/quiz.helpers';
 import {IPlayerAnswer, IPlayerQuestion} from '../../redux/player/player.interface';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {IAppState} from '../../redux/state.interface';
-import {addPlayerAnswer, addPlayerOpenAnswer, finishPlayerQuiz, setNewQuestion} from '../../redux/player/player.actions';
+import {addPlayerAnswer, addPlayerOpenAnswer, setNewQuestion} from '../../redux/player/player.actions';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 
@@ -20,6 +19,8 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
   @select(['player', 'question']) question: Observable<IPlayerQuestion>;
   @select$(['player', 'answers'], mapToArray) answers: Observable<IPlayerAnswer[]>;
 
+  //TODO:
+  //fetch question index as well to show "Question X/X"
   questionId: String;
   questionType: string;
   playerId: String;
@@ -29,15 +30,16 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
   questionSubscription: Subscription;
   playerSubscription: Subscription;
 
-  constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder,  private router: Router) { }
+  constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router) {
+  }
 
   ngOnInit() {
 
-    this.questionSubscription = this.question.subscribe( (question: IPlayerQuestion) => {
+    this.questionSubscription = this.question.subscribe((question: IPlayerQuestion) => {
       this.questionId = question.questionId;
       this.questionType = question.type;
       this.createForm();
-    } );
+    });
 
     this.answerSubscription = this.answers.subscribe((answers: IPlayerAnswer[]) => {
       answers.map((answer: IPlayerAnswer) => this.addAnswer(answer.answerId, answer.value));
@@ -47,7 +49,7 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
   }
 
 
-  createForm () {
+  createForm() {
     this.questionForm = this.fb.group({
       answers: this.fb.array([]),
       answer: ['']
@@ -74,7 +76,7 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
       ];
     }
 
-    if(this.questionType === 'OPEN') {
+    if (this.questionType === 'OPEN') {
       postPlayerAnswer = addPlayerOpenAnswer;
     }
 

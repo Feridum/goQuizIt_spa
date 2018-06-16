@@ -1,7 +1,7 @@
 <div class="container-fluid form-background justify-content-center">
   <div class="col-4 form-col center-container align-self-center">
     <div class="row form-center">
-      <div class="col-12 form-header-text">Dodaj pytanie</div>
+      <div class="col-12 form-header-text">Atrybuty pytania</div>
     </div>
     <div class="row form-center">
       <div class="col-12 inputs">
@@ -10,9 +10,7 @@
             <mat-form-field class="full-width">
               <textarea matInput
                         formControlName="value"
-                        placeholder="Treść pytania"
                         type="text"
-                        maxLength="25"
                         class="text-area">
               </textarea>
             </mat-form-field>
@@ -27,13 +25,15 @@
             <div formArrayName="answers" *ngFor="let answer of formAnswers.controls; let i = index;">
               <div [formGroupName]="i">
                 <mat-form-field class="full-width">
-                  <mat-radio-button name="isPositive" type="radio" [value]="i" [checked]="radioCheckedIndex==i"
-                                    (change)="onSelectionChange(i)">
-                    <input matInput
-                           formControlName="value"
-                           placeholder="Odpowiedź"
-                           type="text"/>
-                  </mat-radio-button>
+                  <input name="isPositive" type="radio" [value]="i" [checked]="radioCheckedIndex==i"
+                         (change)="onSelectionChange(i)">
+                  <!--<mat-radio-button name="isPositive" type="radio" [value]="i" [checked]="radioCheckedIndex==i"-->
+                  <!--(change)="onSelectionChange(i)">-->
+                  <input matInput
+                         formControlName="value"
+                         placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Odpowiedź"
+                         type="text"/>
+                  <!--</mat-radio-button>-->
                 </mat-form-field>
               </div>
             </div>
@@ -44,12 +44,13 @@
                  *ngFor="let answer of formAnswers.controls; let i = index;">
               <div [formGroupName]="i">
                 <mat-form-field class="full-width">
-                  <mat-checkbox [formControlName]="value">
-                    <input matInput
-                           formControlName="value"
-                           placeholder="Odpowiedź"
-                           type="text"/>
-                  </mat-checkbox>
+                  <!--<mat-checkbox [formControlName]="value">-->
+                  <input formControlName="isPositive" type="checkbox">
+                  <input matInput
+                         formControlName="value"
+                         placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Odpowiedź"
+                         type="text"/>
+                  <!--</mat-checkbox>-->
                 </mat-form-field>
               </div>
             </div>

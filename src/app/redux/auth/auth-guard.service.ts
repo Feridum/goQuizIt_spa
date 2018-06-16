@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
-import {IAuthState} from './auth.interface';
-import {NgRedux, select, select$} from '@angular-redux/store';
-import {IAppState} from '../state.interface';
+import {select$} from '@angular-redux/store';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/isEmpty';
 
@@ -12,12 +10,14 @@ export const checkIfTokenExist = (obs$: Observable<string>): Observable<boolean>
 @Injectable()
 export class AuthGuardService implements CanActivate {
   @select$(['auth', 'token'], checkIfTokenExist) auth$: Observable<boolean>;
-  constructor(private router: Router) { }
+
+  constructor(private router: Router) {
+  }
 
   canActivate() {
     this.auth$.subscribe(value => {
-      console.log(value, this.auth$)
-      if ( !value ) {
+      console.log(value, this.auth$);
+      if (!value) {
         this.router.navigate(['/login']);
       }
     });

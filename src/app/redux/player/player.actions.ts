@@ -6,15 +6,14 @@ import {
   ADD_PLAYER_ANSWER_REQUEST,
   ADD_PLAYER_ANSWER_SUCCESS,
   CREATE_PLAYER_FAILURE,
-  CREATE_PLAYER_REQUEST, CREATE_PLAYER_SUCCESS, FETCH_QUIZ_BY_TOKEN_FAILURE, FETCH_QUIZ_BY_TOKEN_REQUEST,
-  FETCH_QUIZ_BY_TOKEN_SUCCESS, FINISH_PLAYER_QUIZ, SET_NEW_QUESTION
+  CREATE_PLAYER_REQUEST,
+  CREATE_PLAYER_SUCCESS,
+  FETCH_QUIZ_BY_TOKEN_FAILURE,
+  FETCH_QUIZ_BY_TOKEN_REQUEST,
+  FETCH_QUIZ_BY_TOKEN_SUCCESS,
+  FINISH_PLAYER_QUIZ,
+  SET_NEW_QUESTION
 } from './player.action-types';
-import {
-  CREATE_QUIZ_FAILURE,
-  CREATE_QUIZ_REQUEST, CREATE_QUIZ_SUCCESS, GET_INACTIVE_QUIZ_LIST_FAILURE, GET_INACTIVE_QUIZ_LIST_REQUEST,
-  GET_INACTIVE_QUIZ_LIST_SUCCESS
-} from '../quiz/quiz.action-types';
-
 
 export const fetchQuizByToken = (token): IRSAAction => {
   return {
@@ -25,7 +24,6 @@ export const fetchQuizByToken = (token): IRSAAction => {
     }
   };
 };
-
 
 export const addPlayer = (quizId, player): IRSAAction => {
   return {
@@ -60,7 +58,6 @@ export const addPlayerOpenAnswer = (playerId, questionId, value): IRSAAction => 
   };
 };
 
-
 export const finishPlayerQuiz = () => ({
   type: FINISH_PLAYER_QUIZ
 });
@@ -68,4 +65,4 @@ export const finishPlayerQuiz = () => ({
 export const setNewQuestion = (payload) => ({
   type: SET_NEW_QUESTION,
   payload
-})
+});

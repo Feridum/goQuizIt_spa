@@ -1,15 +1,12 @@
-import { NgModule } from '@angular/core';
-
-import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
-import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
-import { provideReduxForms } from '@angular-redux/form';
-
-import { createLogger } from 'redux-logger';
-
-import { IAppState } from './state.interface';
-import { rootReducer } from './reducers';
-import { RootEpics } from './epics';
-import { apiMiddleware } from 'redux-api-middleware';
+import {NgModule} from '@angular/core';
+import {DevToolsExtension, NgRedux, NgReduxModule} from '@angular-redux/store';
+import {NgReduxRouter, NgReduxRouterModule} from '@angular-redux/router';
+import {provideReduxForms} from '@angular-redux/form';
+import {createLogger} from 'redux-logger';
+import {IAppState} from './state.interface';
+import {rootReducer} from './reducers';
+import {RootEpics} from './epics';
+import {apiMiddleware} from 'redux-api-middleware';
 import {AuthEpics} from './auth/auth.epics';
 import {headersMiddleware} from '../middlewares/headersMiddleware';
 import {errorsMiddleware} from '../middlewares/errors';
@@ -36,7 +33,7 @@ export class StoreModule {
         createLogger(),
         ...rootEpics.createEpics()
       ],
-      devTools.isEnabled() ? [ devTools.enhancer() ] : []);
+      devTools.isEnabled() ? [devTools.enhancer()] : []);
 
     if (ngReduxRouter) {
       ngReduxRouter.initialize();

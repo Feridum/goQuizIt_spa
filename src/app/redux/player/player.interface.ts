@@ -1,30 +1,29 @@
-
 export interface IPlayerState {
-  quiz: IPlayerQuizState,
-  playerId: String,
-  question: IPlayerQuestion,
-  answers: IPlayerAnswer[],
+  quiz: IPlayerQuizState;
+  playerId: String;
+  question: IPlayerQuestion;
+  answers: IPlayerAnswer[];
 }
 
 export interface IPlayerQuizState {
-  id: String,
-  token: String,
-  title: String,
-  mailRequired: Boolean,
-  telephoneNumberRequired: Boolean,
+  id: String;
+  token: String;
+  title: String;
+  mailRequired: Boolean;
+  telephoneNumberRequired: Boolean;
 }
 
 export interface IPlayer {
-  id: string
+  id: string;
 }
 
 export interface IPlayerQuestion {
-  questionId: String,
-  value: String,
-  type: string,
+  questionId: String;
+  value: String;
+  type: string;
 }
 
 export interface IPlayerAnswer {
-  answerId: string,
-  value: String,
+  answerId: string;
+  value: String;
 }

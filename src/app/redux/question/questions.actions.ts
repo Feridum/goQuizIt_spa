@@ -1,15 +1,17 @@
-import {RSAA} from 'redux-api-middleware'
+import {RSAA} from 'redux-api-middleware';
 import {API_URL} from '../../constants';
 import {
   CREATE_QUESTION_FAILURE,
   CREATE_QUESTION_REQUEST,
-  CREATE_QUESTION_SUCCESS, FETCH_QUESTIONS_LIST_FAILURE, FETCH_QUESTIONS_LIST_REQUEST,
-  FETCH_QUESTIONS_LIST_SUCCESS, UPDATE_QUESTION_FAILURE, UPDATE_QUESTION_REQUEST, UPDATE_QUESTION_SUCCESS
+  CREATE_QUESTION_SUCCESS,
+  FETCH_QUESTIONS_LIST_FAILURE,
+  FETCH_QUESTIONS_LIST_REQUEST,
+  FETCH_QUESTIONS_LIST_SUCCESS,
+  UPDATE_QUESTION_FAILURE,
+  UPDATE_QUESTION_REQUEST,
+  UPDATE_QUESTION_SUCCESS
 } from './questions.action-types';
-import {CREATE_QUIZ_FAILURE, CREATE_QUIZ_REQUEST, CREATE_QUIZ_SUCCESS} from '../quiz/quiz.action-types';
 import {IRSAAction} from '../state.interface';
-
-
 
 export const getQuestions = (quizId): IRSAAction => ({
   [RSAA]: {
@@ -23,22 +25,21 @@ export const getQuestions = (quizId): IRSAAction => ({
       },
       FETCH_QUESTIONS_LIST_FAILURE]
   }
-})
-
+});
 
 export const createQuestion = (quizId, question): IRSAAction => ({
-    [RSAA]: {
-      endpoint: `${API_URL}/quiz/${quizId}/questionWithAnswers`,
-      method: 'POST',
-      body: question,
-      types: [
-        CREATE_QUESTION_REQUEST,
-        {
-          type: CREATE_QUESTION_SUCCESS,
-          meta: {quizId: quizId},
-        },
-        CREATE_QUESTION_FAILURE]
-    }
+  [RSAA]: {
+    endpoint: `${API_URL}/quiz/${quizId}/questionWithAnswers`,
+    method: 'POST',
+    body: question,
+    types: [
+      CREATE_QUESTION_REQUEST,
+      {
+        type: CREATE_QUESTION_SUCCESS,
+        meta: {quizId: quizId},
+      },
+      CREATE_QUESTION_FAILURE]
+  }
 });
 
 

@@ -1,0 +1,14 @@
+@import "../../../variables";
+
+.list-icon {
+  margin: 0 10px;
+  font-size: 14pt;
+  color: $primary-light;
+}
+
+.change-state-button {
+  line-height: 25px !important;
+  color: white;
+  position: absolute;
+  right: 30px;
+}

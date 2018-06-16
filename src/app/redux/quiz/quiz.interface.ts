@@ -1,11 +1,9 @@
-
 export interface IQuizState {
-  inactiveQuizList:  {[id: string]: IUnactiveQuiz};
-  activeQuizList: {[id: string]: IActiveQuiz};
-  finishedQuizList: {[id: string]: IFinishedQuiz};
-  results: {[id: string]: IQuizResult};
+  inactiveQuizList: { [id: string]: IUnactiveQuiz };
+  activeQuizList: { [id: string]: IActiveQuiz };
+  finishedQuizList: { [id: string]: IFinishedQuiz };
+  results: { [id: string]: IQuizResult };
 }
-
 
 export interface IUnactiveQuiz {
   id: string;
@@ -18,7 +16,6 @@ export interface IActiveQuiz {
   title: string;
   state: IQuizStatus;
 }
-
 
 export interface IFinishedQuiz {
   id: string;
@@ -40,10 +37,10 @@ export interface IQuizResult {
   answers: IQuizResultAnswer[];
 }
 
-
 export interface IQuizResultAnswer {
   question: string;
   playerAnswers: string[];
   positiveAnswers: string[];
 }
+
 export type IQuizStatus = 'INACTIVE' | 'ACTIVE' | 'FINISHED';

@@ -1,38 +1,69 @@
-<div>{{(question | async)?.value}}</div>
+<app-header-bar></app-header-bar>
+<div class="container-fluid justify-content-center container-flex">
+  <div class="col-10">
+    <div class="question-header">
+      <!--Question {{questionIndex}}.-->
+      Question X.
+    </div>
+    <div class="row question-content justify-content-center align-items-center">
+      <div class="col-8">
+        <div class="row question-text justify-content-center">
+          {{(question | async)?.value}}
+        </div>
+        <div class="row question-answers justify-content-center">
 
-<form [formGroup]="questionForm">
-  <div *ngIf="questionType == 'SINGLE_CHOICE'">
-    Wybierz jedną odpowiedz
-    <div *ngFor="let answer of answers | async ">
-      <div>
-        <label>
-          <input type="radio" formControlName="answer" [value]="answer.answerId"><span>{{ answer.value  }}</span>
-        </label>
+          <form [formGroup]="questionForm">
+            <div *ngIf="questionType == 'SINGLE_CHOICE'">
+              <div class="question-type-help-msg">
+                Wybierz jedną z poniższych odpowiedzi:
+              </div>
+              <div *ngFor="let answer of answers | async ">
+                <div>
+                  <label>
+                    <input formControlName="answer" [value]="answer.answerId" type="radio">
+                    <span>{{answer.value}}</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="questionType == 'MULTIPLE_CHOICE'">
+              <div class="question-type-help-msg">
+                Wybierz jedną lub więcej z poniższych odpowiedzi:
+              </div>
+              <div formArrayName="answers" *ngFor="let answer of questionForm.controls['answers'].controls; let i = index;">
+                <div [formGroupName]="i">
+                  <div>
+                    <label>
+                      <input formControlName="checked" type="checkbox"><span>{{ (answers|async)[i].value  }}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div *ngIf="questionType == 'OPEN'">
+              <div class="question-type-help-msg">
+                Twoja odpowiedź:
+              </div>
+              <mat-form-field class="full-width">
+              <textarea matInput
+                        formControlName="answer"
+                        type="text"
+                        class="text-area">
+              </textarea>
+              </mat-form-field>
+            </div>
+          </form>
+
+        </div>
+        <div class="row question-button justify-content-center">
+          <button mat-button (click)="sendAnswer()">Zatwierdź</button>
+        </div>
       </div>
     </div>
   </div>
-
-  <div *ngIf="questionType == 'MULTIPLE_CHOICE'">
-    Wybierz jedną lub wiecej odpowiedzi
-    <div formArrayName="answers" *ngFor="let answer of questionForm.controls['answers'].controls; let i = index;">
-      <div [formGroupName]="i">
-      <div>
-        <label>
-          <input formControlName="checked" type="checkbox"><span>{{ (answers|async)[i].value  }}</span>
-        </label>
-      </div>
-      </div>
-    </div>
-  </div>
-
-  <div *ngIf="questionType == 'OPEN'">
-    <input
-      formControlName="answer"
-      type="text"
-    />
-  </div>
-</form>
-
-<button (click)="sendAnswer()">Wyślij odpowiedź</button>
-
+</div>
+<app-footer-bar></app-footer-bar>
 

@@ -8,7 +8,6 @@ export interface IAppState {
   auth: IAuthState;
 }
 
-
 type IRSAAType = string | {
   type: string,
   meta: any

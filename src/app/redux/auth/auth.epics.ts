@@ -9,8 +9,8 @@ export class AuthEpics {
   setAccessToken = (action$) => {
     return action$.ofType(FETCH_TOKEN_SUCCESS)
       .map(action => {
-      localStorage.setItem('access_token', action.payload.access_token);
-    }).ignoreElements();
+        localStorage.setItem('access_token', action.payload.access_token);
+      }).ignoreElements();
   }
 
   deleteAccessToken = (action$) => {

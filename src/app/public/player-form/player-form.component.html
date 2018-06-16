@@ -1,46 +1,53 @@
-<form [formGroup]="playerForm">
-  <input
-    formControlName="name"
-    type="text"
-    maxLength="25" />
-
-  <div *ngIf="isFieldValid('name')">
-    Pole imie zawiera nieprawidłowe dane
+<app-header-bar></app-header-bar>
+<div class="container-fluid form-background justify-content-center">
+  <div class="col-3 form-col align-self-center">
+    <div class="row form-center">
+      <div class="col-12 form-header-text">Wprowadź swoje dane</div>
+    </div>
+    <div class="row form-center align-items-center">
+      <div class="col-12 inputs">
+        <form [formGroup]="playerForm">
+          <mat-form-field class="full-width">
+            <input matInput
+                   formControlName="name"
+                   placeholder="Imię"
+                   type="text"
+                   maxLength="25"
+                   class="text"/>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput
+                   formControlName="surname"
+                   placeholder="Nazwisko"
+                   type="text"
+                   maxLength="25"
+                   class="text"/>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput
+                   formControlName="mail"
+                   placeholder="Adres e-mail"
+                   type="text"
+                   maxLength="25"
+                   class="text"/>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput
+                   formControlName="telephoneNumber"
+                   placeholder="Numer tel."
+                   type="text"
+                   maxLength="25"
+                   class="text"/>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+    <div class="row form-center">
+      <div class="col-12 form-btn">
+        <button mat-button (click)="createPlayer()" [disabled]="playerForm.invalid">Rozpocznij Quiz</button>
+      </div>
+    </div>
   </div>
-
-  <label>Nazwisko</label>
-  <input
-    formControlName="surname"
-    type="text"
-    maxLength="25"/>
-
-  <div *ngIf="isFieldValid('surname')">
-    Pole nazwisko zawiera nieprawidłowe dane
-  </div>
-
-
-  <label>Email</label>
-  <input
-    formControlName="mail"
-    type="text"
-    maxLength="25"/>
-
-  <div *ngIf="isFieldValid('mail')">
-    Pole email zawiera nieprawidłowe dane
-  </div>
-
-
-  <label>Telefon</label>
-  <input
-    formControlName="telephoneNumber"
-    type="text"
-    maxLength="25"/>
-
-  <div *ngIf="isFieldValid('telephoneNumber')">
-    Pole telefon zawiera nieprawidłowe dane
-  </div>
-
-  <button class="btn" (click)="createPlayer()" [disabled]="playerForm.invalid">Start Quiz</button>
-</form>
-
+</div>
+<app-footer-bar></app-footer-bar>
 

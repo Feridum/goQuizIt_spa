@@ -1,4 +1,24 @@
-<p>
-  finish-quiz works!
-  <a routerLink="/">Strona główna</a>
-</p>
+<app-header-bar></app-header-bar>
+<div class="container-fluid justify-content-center container-flex">
+  <div class="col-10">
+    <div class="question-header">
+      Podsumowanie
+    </div>
+    <div class="row question-content justify-content-center align-items-center">
+      <div class="col-8">
+        <div class="row question-text justify-content-center">
+          Dziękujemy za wykonanie quizu!
+        </div>
+        <div class="row question-answers justify-content-center">
+          Twoje odpowiedzi zostały poprawnie zapisane i przekazane twórcy Quizu w celu weryfikacji.
+        </div>
+        <div class="row question-button justify-content-center">
+          <a routerLink="/">
+            <button mat-button>Strona główna</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer-bar></app-footer-bar>

@@ -1,12 +1,11 @@
 import {IAuthState} from './auth.interface';
 import {FETCH_TOKEN_SUCCESS, LOGOUT} from './auth.action-types';
 
-
 const initialState: IAuthState = {
   token: localStorage.getItem('access_token'),
 };
 
-export const authReducer = (state: IAuthState = initialState , action) => {
+export const authReducer = (state: IAuthState = initialState, action) => {
   const behaviours = {
     [FETCH_TOKEN_SUCCESS]: (state, {payload}) => ({
       ...state,

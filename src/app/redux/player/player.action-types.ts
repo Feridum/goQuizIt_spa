@@ -12,4 +12,4 @@ export const ADD_PLAYER_ANSWER_FAILURE = 'player/ADD_PLAYER_ANSWER_FAILURE';
 
 export const FINISH_PLAYER_QUIZ = 'player/FINISH_PLAYER_QUIZ';
 
-export const SET_NEW_QUESTION = 'player/SET_NEW_QUESTION'
+export const SET_NEW_QUESTION = 'player/SET_NEW_QUESTION';

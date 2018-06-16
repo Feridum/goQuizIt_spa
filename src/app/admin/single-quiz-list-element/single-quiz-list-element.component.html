@@ -1,9 +1,13 @@
 <td>{{quiz.title}}</td>
 <td>{{quiz.state}}</td>
 <td *ngIf="quiz.state === 'INACTIVE'">
-  <a [routerLink]="['/admin/quiz', quiz.id, 'questions']">Question list</a>
-  <a [routerLink]="['/admin/edit-quiz/', quiz.id]"> Edit quiz</a>
-  <button (click)="setQuizActive()">Active</button>
+  <a [routerLink]="['/admin/quiz', quiz.id, 'questions']">
+    <i class="fa fa-list-ol list-icon" title="Wyświetl pytania"></i>
+  </a>
+  <a [routerLink]="['/admin/edit-quiz/', quiz.id]">
+    <i class="fa fa-cogs list-icon" title="Edytuj Quiz"></i>
+  </a>
+  <button mat-button (click)="setQuizActive()" class="change-state-button">Aktywuj</button>
 </td>
 
 <td *ngIf="quiz.state === 'ACTIVE'">
@@ -11,11 +15,21 @@
 </td>
 
 <td *ngIf="quiz.state === 'ACTIVE'">
-  <button (click)="setQuizFinished()">Finish</button>
-  <a [routerLink]="[route | async, quiz.id, 'players']">Players list</a>
+  <a [routerLink]="[route | async, quiz.id, 'players']">
+    <i class="fa fa-users list-icon" title="Wyświetl użytkowników"></i>
+  </a>
 </td>
 
+<td *ngIf="quiz.state === 'ACTIVE'">
+  <button mat-button (click)="setQuizFinished()" class="change-state-button">Zakończ</button>
+</td>
+
+
 <td *ngIf="quiz.state == 'FINISHED'">
-  <a [routerLink]="[route | async, quiz.id, 'results']">Results</a>
-  <a [href]="quizPdfUrl" target="_blank">PDF</a>
+  <a [routerLink]="[route | async, quiz.id, 'results']">
+    <i class="fa fa-bar-chart list-icon" title="Pokaż wyniki"></i>
+  </a>
+  <a [href]="quizPdfUrl" target="_blank">
+    <i class="fa fa-file-pdf-o list-icon" title="Generuj report PDF"></i>
+  </a>
 </td>

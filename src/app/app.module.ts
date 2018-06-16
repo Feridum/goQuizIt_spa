@@ -24,7 +24,6 @@ import {PlayerListComponent} from './admin/player-list/player-list.component';
 import {SinglePlayerComponent} from './admin/single-player/single-player.component';
 import {SearchQuizComponent} from './public/search-quiz/search-quiz.component';
 import {PlayerFormComponent} from './public/player-form/player-form.component';
-import {QuizSolveComponent} from './public/quiz-solve/quiz-solve.component';
 import {SingleQuestionComponent} from './public/single-question/single-question.component';
 import {ScrollToModule} from '@nicky-lenaers/ngx-scroll-to';
 import {HeaderBarComponent} from './common-elements/header-bar/header-bar.component';
@@ -59,7 +58,6 @@ import {QuizResultComponent} from './admin/quiz-result/quiz-result.component';
     SinglePlayerComponent,
     SearchQuizComponent,
     PlayerFormComponent,
-    QuizSolveComponent,
     SingleQuestionComponent,
     FinishQuizComponent,
     QuizResultComponent,

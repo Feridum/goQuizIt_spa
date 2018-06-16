@@ -1,7 +1,7 @@
 <table class="table table-striped question-table">
   <thead>
   <tr>
-    <th scope="col">Pytanie</th>
+    <th scope="col">Treść pytania</th>
     <th scope="col">Akcje</th>
   </tr>
   </thead>
@@ -9,7 +9,9 @@
   <tr *ngFor="let question of questions | async ">
     <td>{{question.question.value}}</td>
     <td>
-      <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.question.questionId]"> Edit </a>
+      <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.question.questionId]">
+        <i class="fa fa-cogs list-icon" title="Edytuj pytanie"></i>
+      </a>
     </td>
   </tr>
   <tr>

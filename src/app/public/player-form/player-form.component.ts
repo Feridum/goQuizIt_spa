@@ -1,11 +1,9 @@
-import {ChangeDetectionStrategy, Component, OnChanges, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Location} from '@angular/common';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
 import {addPlayer} from '../../redux/player/player.actions';
-import {detectChanges} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-player-form',
