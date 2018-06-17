@@ -19,7 +19,7 @@
               <div *ngFor="let answer of answers | async ">
                 <div>
                   <label>
-                    <input formControlName="answer" [value]="answer.answerId" type="radio">
+                    <input formControlName="answer" [value]="answer.answerId" type="radio" class="box-style">
                     <span>{{answer.value}}</span>
                   </label>
                 </div>
@@ -30,24 +30,26 @@
               <div class="question-type-help-msg">
                 Wybierz jedną lub więcej z poniższych odpowiedzi:
               </div>
-              <div formArrayName="answers" *ngFor="let answer of questionForm.controls['answers'].controls; let i = index;">
+              <div formArrayName="answers"
+                   *ngFor="let answer of questionForm.controls['answers'].controls; let i = index;">
                 <div [formGroupName]="i">
                   <div>
                     <label>
-                      <input formControlName="checked" type="checkbox"><span>{{ (answers|async)[i].value  }}</span>
+                      <input formControlName="checked" type="checkbox" class="box-style">
+                      <span>{{(answers|async)[i].value}}</span>
                     </label>
                   </div>
                 </div>
               </div>
             </div>
 
-
-            <div *ngIf="questionType == 'OPEN'">
+            <div *ngIf="questionType == 'OPEN'" class="full-width">
               <div class="question-type-help-msg">
                 Twoja odpowiedź:
               </div>
               <mat-form-field class="full-width">
               <textarea matInput
+                        rows="6"
                         formControlName="answer"
                         type="text"
                         class="text-area">
