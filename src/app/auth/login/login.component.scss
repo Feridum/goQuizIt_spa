@@ -45,7 +45,19 @@
   margin-bottom: 60px;
 }
 
+.user-links {
+  margin-top: 15px;
+  color: $primary-light;
+  font-weight: 300;
+  font-size: 10pt;
+  text-align: center;
+}
 
 a{
-  color: white;
+  color: $primary-light;
+  font-weight: 300;
+}
+
+a:hover {
+  color: whitesmoke;
 }

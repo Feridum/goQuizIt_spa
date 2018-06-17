@@ -6,7 +6,7 @@
     </div>
     <div class="row form-center align-items-center">
       <div class="col-12 inputs">
-        <form [formGroup]="playerForm">
+        <form [formGroup]="playerForm" (keyup.enter)="createPlayer()">
           <mat-form-field class="full-width">
             <input matInput
                    formControlName="name"
