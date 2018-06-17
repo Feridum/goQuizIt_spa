@@ -14,6 +14,7 @@ export class SearchQuizComponent implements OnInit {
 
   token: string;
   quizId: String = null;
+  errorMessage = null;
   constructor(private router: Router, private ngRedux: NgRedux<IAppState>, private location: Location) { }
 
   ngOnInit() {
@@ -26,11 +27,14 @@ export class SearchQuizComponent implements OnInit {
   async searchQuiz() {
     await this.ngRedux.dispatch(fetchQuizByToken(this.token)).then((e: any) => {
       if (!e.error) {
+        this.errorMessage = null;
         this.quizId = e.payload.id;
+      } else {
+        this.errorMessage = e.payload.response.message;
       }
     });
 
-    if(this.quizId) {
+    if (this.quizId) {
       this.router.navigate(['/enroll/', this.quizId]);
     }
   }

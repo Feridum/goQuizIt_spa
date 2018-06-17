@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
 import {addPlayer} from '../../redux/player/player.actions';
+import {IPlayerQuizState} from '../../redux/player/player.interface';
 
 @Component({
   selector: 'app-player-form',
@@ -29,6 +30,13 @@ export class PlayerFormComponent implements OnInit {
     this.quizId = this.route.snapshot.params['quizId'];
 
     console.log(this.playerForm, this.quizId);
+    this.ngRedux.select(['player', 'quiz']).subscribe((quiz: IPlayerQuizState) => {
+      if (quiz.mailRequired) {
+        this.playerForm.controls['mail'].setValidators([Validators.email, Validators.required]);
+      } else if (quiz.telephoneNumberRequired) {
+        this.playerForm.controls['telephoneNumber'].setValidators([Validators.required]);
+      }
+    }).unsubscribe();
   }
 
 
@@ -37,10 +45,10 @@ export class PlayerFormComponent implements OnInit {
   }
 
   createPlayer() {
-    this.ngRedux.dispatch(addPlayer(this.quizId, this.playerForm.value)).then((e: any) => {
-      if (!e.error) {
-        this.router.navigate(['/question']);
-      }
-    });
+    // this.ngRedux.dispatch(addPlayer(this.quizId, this.playerForm.value)).then((e: any) => {
+    //   if (!e.error) {
+    //     this.router.navigate(['/question']);
+    //   }
+    // });
   }
 }

@@ -18,6 +18,8 @@ import {PlayerFormComponent} from './public/player-form/player-form.component';
 import {SingleQuestionComponent} from './public/single-question/single-question.component';
 import {FinishQuizComponent} from './public/finish-quiz/finish-quiz.component';
 import {QuizResultComponent} from './admin/quiz-result/quiz-result.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {path: '', component: WelcomeComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: 'question', component: SingleQuestionComponent},
   {path: 'finish', component: FinishQuizComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'user-reqister', component: RegisterComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
   {
     path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], children: [
       {

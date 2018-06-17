@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IAppState} from '../../redux/state.interface';
 import {NgRedux} from '@angular-redux/store';
 import {CREATE_QUIZ_SUCCESS, UPDATE_QUIZ_SUCCESS} from '../../redux/quiz/quiz.action-types';
@@ -23,6 +23,8 @@ export class QuizFormComponent implements OnInit {
   ngOnInit() {
     this.quizForm = this.fb.group({
       title: ['', [Validators.required]],
+      mailRequired: [false],
+      telephoneNumberRequired: [false],
     });
 
     this.quizId = this.route.snapshot.params['quizId'];
@@ -40,6 +42,7 @@ export class QuizFormComponent implements OnInit {
 
 
   createQuiz() {
+      console.log(this.quizForm.value);
     if (!this.quizId) {
       console.log({...this.quizForm.value, ownerId: 'xyz'});
       this.ngRedux.dispatch(createQuiz(this.quizForm.value)).then((e: any) => {

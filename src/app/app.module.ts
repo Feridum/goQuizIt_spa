@@ -39,6 +39,8 @@ import {BackToTopComponent} from './common-elements/back-to-top/back-to-top.comp
 import {CenterFormComponent} from './common-elements/center-form/center-form.component';
 import {FinishQuizComponent} from './public/finish-quiz/finish-quiz.component';
 import {QuizResultComponent} from './admin/quiz-result/quiz-result.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import {QuizResultComponent} from './admin/quiz-result/quiz-result.component';
     FooterBarComponent,
     BackToTopComponent,
     CenterFormComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

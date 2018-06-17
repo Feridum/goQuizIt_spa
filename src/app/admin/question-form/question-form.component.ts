@@ -58,15 +58,21 @@ export class QuestionFormComponent implements OnInit {
             }
           }
           this.questionForm.patchValue(question);
+          if (question.question.type === 'SINGLE_CHOICE') {
+            this.radioCheckedIndex = question.answers.findIndex(answer => answer.positive);
+          } else if (question.question.type === 'OPEN') {
+            this.answers.removeAt(0);
+            this.answers.removeAt(1);
+          }
         }
-      }).unsubscribe();
+      });
     }
   }
 
   createAnswer() {
     return this.fb.group({
-      value: [''],
-      isPositive: [false]
+      value: ['', Validators.required],
+      positive: [false]
     });
   }
 
@@ -93,7 +99,6 @@ export class QuestionFormComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.questionForm.value);
 
     let data = {
       'question': this.questionForm.value.question,
@@ -104,7 +109,10 @@ export class QuestionFormComponent implements OnInit {
     if (questionType === 'MULTIPLE_CHOICE') {
       data = {
         ...data,
-        answers: this.questionForm.value.answers
+        answers: this.questionForm.value.answers.map(answer => ({
+          ...answer,
+          isPositive: answer.positive
+        }))
       };
     } else if (questionType === 'SINGLE_CHOICE') {
       data = {

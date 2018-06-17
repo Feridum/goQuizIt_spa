@@ -8,6 +8,7 @@ export interface IQuestion {
   question: {
     questionId: string;
     value: string
+    type: string
   };
   answers: IQuestionAnswer[];
   image?: string;
@@ -18,5 +19,5 @@ export interface IQuestion {
 export interface  IQuestionAnswer {
   id: string;
   name: string;
-  isCorrect: boolean;
+  positive: boolean;
 }
