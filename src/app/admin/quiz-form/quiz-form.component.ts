@@ -1,10 +1,8 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IAppState} from '../../redux/state.interface';
 import {NgRedux} from '@angular-redux/store';
-import {CREATE_QUIZ_SUCCESS, UPDATE_QUIZ_SUCCESS} from '../../redux/quiz/quiz.action-types';
 import {ActivatedRoute, Router} from '@angular/router';
-import { v4 as uuid } from 'uuid';
 import {createQuiz, getInactiveQuizList, updateQuiz} from '../../redux/quiz/quiz.actions';
 
 @Component({
@@ -16,9 +14,10 @@ export class QuizFormComponent implements OnInit {
 
   quizForm: FormGroup;
   quizId: string;
-    constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
-      this.ngOnInit();
-    }
+
+  constructor(private ngRedux: NgRedux<IAppState>, private fb: FormBuilder, private router: Router, private route: ActivatedRoute) {
+    this.ngOnInit();
+  }
 
   ngOnInit() {
     this.quizForm = this.fb.group({

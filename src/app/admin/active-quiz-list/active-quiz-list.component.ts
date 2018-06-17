@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {mapToArray} from '../../redux/quiz/quiz.helpers';
 import {NgRedux, select$} from '@angular-redux/store';
-import {IActiveQuiz, IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
+import {IActiveQuiz, IInactiveQuiz} from '../../redux/quiz/quiz.interface';
 import {getActiveQuizList, getInactiveQuizList} from '../../redux/quiz/quiz.actions';
 import {IAppState} from '../../redux/state.interface';
 

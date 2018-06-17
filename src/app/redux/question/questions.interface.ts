@@ -1,8 +1,6 @@
-
 export interface IQuestionsState {
-  questions: {[id: string]: IQuestion[]};
+  questions: { [id: string]: IQuestion[] };
 }
-
 
 export interface IQuestion {
   question: {
@@ -15,8 +13,7 @@ export interface IQuestion {
   youtube?: string;
 }
 
-
-export interface  IQuestionAnswer {
+export interface IQuestionAnswer {
   id: string;
   name: string;
   positive: boolean;

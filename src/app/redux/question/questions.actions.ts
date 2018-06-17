@@ -4,6 +4,9 @@ import {
   CREATE_QUESTION_FAILURE,
   CREATE_QUESTION_REQUEST,
   CREATE_QUESTION_SUCCESS,
+  DELETE_QUESTION_FAILURE,
+  DELETE_QUESTION_REQUEST,
+  DELETE_QUESTION_SUCCESS,
   FETCH_QUESTIONS_LIST_FAILURE,
   FETCH_QUESTIONS_LIST_REQUEST,
   FETCH_QUESTIONS_LIST_SUCCESS,
@@ -55,6 +58,21 @@ export const updateQuestion = (quizId, questionId, question): IRSAAction => ({
         meta: {quizId},
       },
       UPDATE_QUESTION_FAILURE
+    ]
+  }
+});
+
+export const deleteQuestion = (quizId, questionId): IRSAAction => ({
+  [RSAA]: {
+    endpoint: `${API_URL}/question/${questionId}`,
+    method: 'DELETE',
+    types: [
+      DELETE_QUESTION_REQUEST,
+      {
+        type: DELETE_QUESTION_SUCCESS,
+        meta: {quizId},
+      },
+      DELETE_QUESTION_FAILURE
     ]
   }
 });

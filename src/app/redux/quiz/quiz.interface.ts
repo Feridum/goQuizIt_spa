@@ -1,11 +1,11 @@
 export interface IQuizState {
-  inactiveQuizList: { [id: string]: IUnactiveQuiz };
+  inactiveQuizList: { [id: string]: IInactiveQuiz };
   activeQuizList: { [id: string]: IActiveQuiz };
   finishedQuizList: { [id: string]: IFinishedQuiz };
   results: { [id: string]: IQuizResult };
 }
 
-export interface IUnactiveQuiz {
+export interface IInactiveQuiz {
   id: string;
   title: string;
   state: IQuizStatus;

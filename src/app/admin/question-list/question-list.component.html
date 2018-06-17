@@ -12,6 +12,9 @@
       <a [routerLink]="['/admin/quiz', quizId, 'edit-question', question.question.questionId]">
         <i class="fa fa-cogs list-icon" title="Edytuj pytanie"></i>
       </a>
+      <a [routerLink]="['/admin/quiz', quizId, 'questions']">
+        <i class="fa fa-trash-o list-icon" title="Usuń pytanie" (click)="deleteQuestion(question.question.questionId)"></i>
+      </a>
     </td>
   </tr>
   <tr>

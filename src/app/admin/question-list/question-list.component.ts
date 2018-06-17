@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
-import {logout} from '../../redux/auth/auth.actions';
+import {ActivatedRoute} from '@angular/router';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IQuestion} from '../../redux/question/questions.interface';
 import {Observable} from 'rxjs/Observable';
 import {getQuestions} from '../../redux/question/questions.actions';
+import {deleteQuestion} from '../../redux/question/questions.actions';
 
 @Component({
   selector: 'app-question-list',
@@ -21,7 +20,6 @@ export class QuestionListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private ngRedux: NgRedux<IAppState>) {
   }
 
-
   ngOnInit() {
 
     this.quizId = this.route.snapshot.params['quizId'];
@@ -34,5 +32,9 @@ export class QuestionListComponent implements OnInit {
         }
       }).unsubscribe();
     }
+  }
+
+  deleteQuestion(questionId) {
+    this.ngRedux.dispatch(deleteQuestion(this.quizId, questionId));
   }
 }

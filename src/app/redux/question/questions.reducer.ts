@@ -1,5 +1,10 @@
 import {IQuestion, IQuestionsState} from './questions.interface';
-import {CREATE_QUESTION_SUCCESS, FETCH_QUESTIONS_LIST_SUCCESS, UPDATE_QUESTION_SUCCESS} from './questions.action-types';
+import {
+  CREATE_QUESTION_SUCCESS,
+  DELETE_QUESTION_SUCCESS,
+  FETCH_QUESTIONS_LIST_SUCCESS,
+  UPDATE_QUESTION_SUCCESS
+} from './questions.action-types';
 
 const initialState: IQuestionsState = {
   questions: null
@@ -8,13 +13,13 @@ const initialState: IQuestionsState = {
 export const questionsReducer = (state: IQuestionsState = initialState, action) => {
   const behaviours = {
     [FETCH_QUESTIONS_LIST_SUCCESS]: (state, {payload, meta}) => ({
-        questions: {
-          ...(state.questions || [] ) ,
-          [meta.quizId] : [
-            ...(state.questions && state.questions[meta.quizId] || []),
-            ...payload,
-          ]
-        }
+      questions: {
+        ...(state.questions || []),
+        [meta.quizId]: [
+          ...(state.questions && state.questions[meta.quizId] || []),
+          ...payload,
+        ]
+      }
     }),
     [CREATE_QUESTION_SUCCESS]: (state, {payload, meta}) => ({
       questions: {
@@ -28,9 +33,12 @@ export const questionsReducer = (state: IQuestionsState = initialState, action) 
     [UPDATE_QUESTION_SUCCESS]: (state, {payload, meta}) => ({
       questions: {
         ...state.questions,
-        [meta.quizId]: state.questions[meta.quizId].map((e: IQuestion) => e.question.questionId === payload.question.questionId ? payload :  e)
+        [meta.quizId]: state.questions[meta.quizId].map((e: IQuestion) => e.question.questionId === payload.question.questionId ? payload : e)
       }
-    })
+    }),
+    [DELETE_QUESTION_SUCCESS]: (state, {payload, meta}) => ({
+      questions: state.questions[meta.quizId].filter(questions => questions.id !== meta.questionId)
+    }),
   };
 
   const behaviour = behaviours[action.type];

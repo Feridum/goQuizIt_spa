@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgRedux, select, select$} from '@angular-redux/store';
-import {IUnactiveQuiz} from '../../redux/quiz/quiz.interface';
+import {IInactiveQuiz} from '../../redux/quiz/quiz.interface';
 import {Observable} from 'rxjs/Observable';
 import {IAppState} from '../../redux/state.interface';
 import {SET_QUIZ_ACTIVE_SUCCESS} from '../../redux/quiz/quiz.action-types';
