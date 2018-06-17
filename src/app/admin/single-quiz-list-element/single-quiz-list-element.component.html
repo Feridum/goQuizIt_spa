@@ -7,6 +7,9 @@
   <a [routerLink]="['/admin/edit-quiz/', quiz.id]">
     <i class="fa fa-cogs list-icon" title="Edytuj Quiz"></i>
   </a>
+  <a routerLink="/admin">
+    <i class="fa fa-trash-o list-icon" title="Usuń pytanie" (click)="deleteQuiz()"></i>
+  </a>
   <button mat-button (click)="setQuizActive()" class="change-state-button">Aktywuj</button>
 </td>
 
@@ -31,5 +34,8 @@
   </a>
   <a [href]="quizPdfUrl" target="_blank">
     <i class="fa fa-file-pdf-o list-icon" title="Generuj report PDF"></i>
+  </a>
+  <a routerLink="/admin/finished-quiz">
+    <i class="fa fa-trash-o list-icon" title="Usuń pytanie" (click)="deleteQuiz()"></i>
   </a>
 </td>

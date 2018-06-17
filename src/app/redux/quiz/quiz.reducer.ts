@@ -1,6 +1,7 @@
 import {IQuizState} from './quiz.interface';
 import {
   CREATE_QUIZ_SUCCESS,
+  DELETE_QUIZ_SUCCESS,
   GET_ACTIVE_QUIZ_LIST_SUCCESS,
   GET_FINISHED_QUIZ_LIST_SUCCESS,
   GET_INACTIVE_QUIZ_LIST_SUCCESS,
@@ -89,7 +90,12 @@ export const quizReducer = (state: IQuizState = initialState, action) => {
     [LOGOUT]: (state, {payload}) => ({
       ...state,
       inactiveQuizList: null
-    })
+    }),
+    [DELETE_QUIZ_SUCCESS]: (state, {payload, meta}) => ({
+      ...state,
+      inactiveQuizList: omit(state.inactiveQuizList, meta.quizId),
+      finishedQuizList: omit(state.finishedQuizList, meta.quizId),
+    }),
   };
 
   const behaviour = behaviours[action.type];

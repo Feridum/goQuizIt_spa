@@ -3,6 +3,9 @@ import {
   CREATE_QUIZ_FAILURE,
   CREATE_QUIZ_REQUEST,
   CREATE_QUIZ_SUCCESS,
+  DELETE_QUIZ_FAILURE,
+  DELETE_QUIZ_REQUEST,
+  DELETE_QUIZ_SUCCESS,
   FETCH_PLAYERS_LIST_FAILURE,
   FETCH_PLAYERS_LIST_REQUEST,
   FETCH_PLAYERS_LIST_SUCCESS,
@@ -120,5 +123,19 @@ export const getQuizResult = (quizId): IRSAAction => ({
         meta: {quizId}
       },
       GET_QUIZ_RESULTS_FAILURE]
+  }
+});
+
+export const deleteQuiz = (quizId): IRSAAction => ({
+  [RSAA]: {
+    method: 'DELETE',
+    endpoint: `${API_URL}/quiz/${quizId}`,
+    types: [
+      DELETE_QUIZ_REQUEST,
+      {
+        type: DELETE_QUIZ_SUCCESS,
+        meta: {quizId}
+      },
+      DELETE_QUIZ_FAILURE]
   }
 });

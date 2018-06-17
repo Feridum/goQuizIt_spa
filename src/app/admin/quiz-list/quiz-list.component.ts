@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {logout} from '../../redux/auth/auth.actions';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-quiz-list',
@@ -11,7 +11,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class QuizListComponent implements OnInit {
 
-  constructor( private ngRedux: NgRedux<IAppState>, private router: Router) { }
+  constructor(private ngRedux: NgRedux<IAppState>, private router: Router) {
+  }
 
   ngOnInit() {
 
