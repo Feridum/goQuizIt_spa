@@ -11,8 +11,8 @@ const initialState: IPlayerState = {
   playerId: JSON.parse(localStorage.getItem('player')),
   question: JSON.parse(localStorage.getItem('player_question')),
   answers: JSON.parse(localStorage.getItem('player_answers')),
-  questionIndex: JSON.parse(localStorage.getItem('question_index')),
-  numberOfQuestions: JSON.parse(localStorage.getItem('number_of_questions')),
+  questionIndex: null,
+  numberOfQuestions: null
 };
 
 export const playerReducer = (state: IPlayerState = initialState, action) => {
