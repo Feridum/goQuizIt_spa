@@ -9,6 +9,8 @@
           <div formGroupName="question">
             <mat-form-field class="full-width">
               <textarea matInput
+                        placeholder="Treść pytania"
+                        rows="1"
                         formControlName="value"
                         type="text"
                         class="text-area">
@@ -25,15 +27,12 @@
             <div formArrayName="answers" *ngFor="let answer of formAnswers.controls; let i = index;">
               <div [formGroupName]="i">
                 <mat-form-field class="full-width">
-                  <input name="isPositive" type="radio" [value]="i" [checked]="radioCheckedIndex==i"
-                         (change)="onSelectionChange(i)">
-                  <!--<mat-radio-button name="positive" type="radio" [value]="i" [checked]="radioCheckedIndex==i"-->
-                  <!--(change)="onSelectionChange(i)">-->
                   <input matInput
                          formControlName="value"
-                         placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Odpowiedź"
+                         placeholder="Odpowiedź"
                          type="text"/>
-                  <!--</mat-radio-button>-->
+                  <input name="isPositive" type="radio" [value]="i" [checked]="radioCheckedIndex==i"
+                         (change)="onSelectionChange(i)" class="box-style">
                 </mat-form-field>
               </div>
             </div>
@@ -44,13 +43,11 @@
                  *ngFor="let answer of formAnswers.controls; let i = index;">
               <div [formGroupName]="i">
                 <mat-form-field class="full-width">
-                  <!--<mat-checkbox [formControlName]="value">-->
-                  <input formControlName="positive" type="checkbox">
                   <input matInput
                          formControlName="value"
-                         placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Odpowiedź"
+                         placeholder="Odpowiedź"
                          type="text"/>
-                  <!--</mat-checkbox>-->
+                  <input formControlName="positive" type="checkbox" class="box-style">
                 </mat-form-field>
               </div>
             </div>
@@ -61,13 +58,14 @@
     </div>
     <div class="row form-center">
       <div class="col-12 form-btn">
-
         <div *ngIf="questionForm.value.question.type != 'OPEN'">
           <button mat-button (click)="addAnswer()">+</button>
           <button mat-button (click)="removeLastAnswer()">-</button>
+          <button mat-button (click)="submitForm()" [disabled]="questionForm.invalid">Zatwierdź</button>
         </div>
-        <button mat-button (click)="submitForm()" [disabled]="questionForm.invalid">Zatwierdź</button>
-
+        <div *ngIf="questionForm.value.question.type == 'OPEN'">
+          <button mat-button (click)="submitForm()" [disabled]="questionForm.invalid">Zatwierdź</button>
+        </div>
       </div>
     </div>
   </div>
