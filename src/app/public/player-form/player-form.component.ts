@@ -45,10 +45,10 @@ export class PlayerFormComponent implements OnInit {
   }
 
   createPlayer() {
-    // this.ngRedux.dispatch(addPlayer(this.quizId, this.playerForm.value)).then((e: any) => {
-    //   if (!e.error) {
-    //     this.router.navigate(['/question']);
-    //   }
-    // });
+    this.ngRedux.dispatch(addPlayer(this.quizId, this.playerForm.value)).then((e: any) => {
+      if (!e.error) {
+        this.router.navigate(['/question']);
+      }
+    });
   }
 }
