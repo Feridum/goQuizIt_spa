@@ -11,6 +11,8 @@ const initialState: IPlayerState = {
   playerId: JSON.parse(localStorage.getItem('player')),
   question: JSON.parse(localStorage.getItem('player_question')),
   answers: JSON.parse(localStorage.getItem('player_answers')),
+  questionIndex: JSON.parse(localStorage.getItem('question_index')),
+  numberOfQuestions: JSON.parse(localStorage.getItem('number_of_questions')),
 };
 
 export const playerReducer = (state: IPlayerState = initialState, action) => {
@@ -23,19 +25,25 @@ export const playerReducer = (state: IPlayerState = initialState, action) => {
       ...state,
       playerId: payload.Player,
       question: payload.Question,
-      answers: payload.Answers
+      answers: payload.Answers,
+      questionIndex: payload.Index,
+      numberOfQuestions: payload.NumberOfQuestions,
     }),
     [FINISH_PLAYER_QUIZ]: (state, {payload}) => ({
       quiz: null,
       playerId: null,
       question: null,
-      answers: null
+      answers: null,
+      questionIndex: null,
+      numberOfQuestions: null,
     }),
     [SET_NEW_QUESTION]: (state, {payload}) => ({
       ...state,
       playerId: payload.Player,
       question: payload.Question,
-      answers: payload.Answers
+      answers: payload.Answers,
+      questionIndex: payload.Index,
+      numberOfQuestions: payload.NumberOfQuestions,
     })
   };
 

@@ -3,6 +3,8 @@ export interface IPlayerState {
   playerId: String;
   question: IPlayerQuestion;
   answers: IPlayerAnswer[];
+  questionIndex: number;
+  numberOfQuestions: number;
 }
 
 export interface IPlayerQuizState {

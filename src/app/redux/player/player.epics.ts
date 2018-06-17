@@ -24,6 +24,8 @@ export class PlayerEpics {
         localStorage.setItem('player', JSON.stringify(action.payload.Player));
         localStorage.setItem('player_question', JSON.stringify(action.payload.Question));
         localStorage.setItem('player_answers', JSON.stringify(action.payload.Answers));
+        localStorage.setItem('question_index', JSON.stringify(action.payload.Index));
+        localStorage.setItem('number_of_questions', JSON.stringify(action.payload.NumberOfQuestions));
       }).ignoreElements();
   };
 
@@ -33,6 +35,8 @@ export class PlayerEpics {
         localStorage.setItem('player', JSON.stringify(action.payload.Player));
         localStorage.setItem('player_question', JSON.stringify(action.payload.Question));
         localStorage.setItem('player_answers', JSON.stringify(action.payload.Answers));
+        localStorage.setItem('question_index', JSON.stringify(action.payload.Index));
+        localStorage.setItem('number_of_questions', JSON.stringify(action.payload.NumberOfQuestions));
       }).ignoreElements();
   };
 
@@ -43,6 +47,8 @@ export class PlayerEpics {
         localStorage.removeItem('player_question');
         localStorage.removeItem('player_answers');
         localStorage.removeItem('player_quiz');
+        localStorage.removeItem('question_index');
+        localStorage.removeItem('number_of_questions');
       }).ignoreElements();
   };
 }

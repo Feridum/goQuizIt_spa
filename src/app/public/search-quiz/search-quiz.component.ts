@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
@@ -15,7 +15,9 @@ export class SearchQuizComponent implements OnInit {
   token: string;
   quizId: String = null;
   errorMessage = null;
-  constructor(private router: Router, private ngRedux: NgRedux<IAppState>, private location: Location) { }
+
+  constructor(private router: Router, private ngRedux: NgRedux<IAppState>, private location: Location) {
+  }
 
   ngOnInit() {
   }

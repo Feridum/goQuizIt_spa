@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NgRedux, select, select$} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
 import {mapToArray} from '../../redux/quiz/quiz.helpers';
-import {IPlayerAnswer, IPlayerQuestion} from '../../redux/player/player.interface';
+import {IPlayerAnswer, IPlayerQuestion, IPlayerState} from '../../redux/player/player.interface';
 import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {IAppState} from '../../redux/state.interface';
 import {addPlayerAnswer, addPlayerOpenAnswer, setNewQuestion} from '../../redux/player/player.actions';
@@ -16,11 +16,15 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class SingleQuestionComponent implements OnInit, OnDestroy {
 
+  @select(['player', 'playerId', 'questionIndex', 'numberOfQuestions']) player: Observable<IPlayerState>;
   @select(['player', 'question']) question: Observable<IPlayerQuestion>;
   @select$(['player', 'answers'], mapToArray) answers: Observable<IPlayerAnswer[]>;
 
   //TODO:
   //fetch question index as well to show "Question X/X"
+  questionIndex: number;
+  numberOfQuestions: number;
+
   questionId: String;
   questionType: string;
   playerId: String;
@@ -45,7 +49,11 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
       answers.map((answer: IPlayerAnswer) => this.addAnswer(answer.answerId, answer.value));
     });
 
-    this.playerSubscription = this.ngRedux.select(['player', 'playerId']).subscribe((playerId: String) => this.playerId = playerId);
+    this.playerSubscription = this.player.subscribe((player: IPlayerState) => {
+      this.playerId = player.playerId;
+      this.questionIndex = player.questionIndex;
+      this.numberOfQuestions = player.numberOfQuestions;
+    });
   }
 
 
