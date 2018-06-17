@@ -62,11 +62,12 @@
     <div class="row form-center">
       <div class="col-12 form-btn">
 
-        <button mat-button (click)="addAnswer()">+</button>
-
-        <button mat-button (click)="removeLastAnswer()">-</button>
-
+        <div *ngIf="questionForm.value.question.type != 'OPEN'">
+          <button mat-button (click)="addAnswer()">+</button>
+          <button mat-button (click)="removeLastAnswer()">-</button>
+        </div>
         <button mat-button (click)="submitForm()" [disabled]="questionForm.invalid">Zatwierdź</button>
+
       </div>
     </div>
   </div>

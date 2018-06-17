@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
 import {ActivatedRoute} from '@angular/router';
@@ -43,7 +43,7 @@ export class QuestionFormComponent implements OnInit {
         type: ['SINGLE_CHOICE']
       }),
       answers: this.fb.array([this.createAnswer(), this.createAnswer()])
-    });
+    }, {validator: this.validateAnswers});
 
     if (this.questionId) {
       this.ngRedux.select(['questions', 'questions', this.quizId]).subscribe((list: IQuestion[]) => {
@@ -60,9 +60,6 @@ export class QuestionFormComponent implements OnInit {
           this.questionForm.patchValue(question);
           if (question.question.type === 'SINGLE_CHOICE') {
             this.radioCheckedIndex = question.answers.findIndex(answer => answer.positive);
-          } else if (question.question.type === 'OPEN') {
-            this.answers.removeAt(0);
-            this.answers.removeAt(1);
           }
         }
       });
@@ -71,7 +68,7 @@ export class QuestionFormComponent implements OnInit {
 
   createAnswer() {
     return this.fb.group({
-      value: ['', Validators.required],
+      value: [''],
       positive: [false]
     });
   }
@@ -138,4 +135,17 @@ export class QuestionFormComponent implements OnInit {
       });
     }
   }
+
+  validateAnswers(control: AbstractControl){
+    if(control.value.question.type == 'OPEN'){
+      return;
+    }else{
+      const index = control.value.answers.findIndex(answer=>answer.value === "");
+      if(index === -1)
+        return
+      return {invalid: true};
+    }
+
+  }
+
 }
