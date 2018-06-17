@@ -70,7 +70,7 @@ export const deleteQuestion = (quizId, questionId): IRSAAction => ({
       DELETE_QUESTION_REQUEST,
       {
         type: DELETE_QUESTION_SUCCESS,
-        meta: {quizId},
+        meta: {quizId, questionId},
       },
       DELETE_QUESTION_FAILURE
     ]

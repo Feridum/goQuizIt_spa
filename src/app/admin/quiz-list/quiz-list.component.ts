@@ -3,6 +3,7 @@ import {logout} from '../../redux/auth/auth.actions';
 import {NgRedux} from '@angular-redux/store';
 import {IAppState} from '../../redux/state.interface';
 import {Router} from '@angular/router';
+import {getActiveQuizList, getFinishedQuizList, getInactiveQuizList} from '../../redux/quiz/quiz.actions';
 
 @Component({
   selector: 'app-quiz-list',
@@ -15,7 +16,9 @@ export class QuizListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.ngRedux.dispatch(getInactiveQuizList());
+    this.ngRedux.dispatch(getActiveQuizList());
+    this.ngRedux.dispatch(getFinishedQuizList());
   }
 
   logout() {

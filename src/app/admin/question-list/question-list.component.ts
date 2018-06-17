@@ -27,10 +27,11 @@ export class QuestionListComponent implements OnInit {
     if (this.quizId) {
       this.questions = this.ngRedux.select(['questions', 'questions', this.quizId]);
       this.questions.subscribe(questionList => {
-        if (questionList === null) {
+        console.log(questionList);
+        if (questionList === null || questionList===undefined) {
           this.ngRedux.dispatch(getQuestions(this.quizId));
         }
-      }).unsubscribe();
+      });
     }
   }
 

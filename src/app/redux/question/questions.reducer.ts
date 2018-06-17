@@ -38,7 +38,8 @@ export const questionsReducer = (state: IQuestionsState = initialState, action) 
     }),
     [DELETE_QUESTION_SUCCESS]: (state, {payload, meta}) => ({
       questions: {
-        ...state.questions[meta.quizId].filter(questions => questions.id !== meta.questionId) }
+        ...state.questions,
+        [meta.quizId]: state.questions[meta.quizId].filter(questions => questions.question.questionId !== meta.questionId) }
     }),
   };
 
