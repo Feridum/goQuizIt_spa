@@ -16,7 +16,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class SingleQuestionComponent implements OnInit, OnDestroy {
 
-  @select(['player', 'playerId', 'questionIndex', 'numberOfQuestions']) player: Observable<IPlayerState>;
+  @select(['player']) player: Observable<IPlayerState>;
   @select(['player', 'question']) question: Observable<IPlayerQuestion>;
   @select$(['player', 'answers'], mapToArray) answers: Observable<IPlayerAnswer[]>;
 
