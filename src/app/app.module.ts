@@ -41,6 +41,8 @@ import {FinishQuizComponent} from './public/finish-quiz/finish-quiz.component';
 import {QuizResultComponent} from './admin/quiz-result/quiz-result.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { HelpComponent } from './public/help/help.component';
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
     CenterFormComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +90,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
     MatRadioModule,
     MatCheckboxModule,
     BrowserAnimationsModule,
+    Ng2PageScrollModule
   ],
   providers: [AuthGuardService],
   bootstrap: [AppComponent]

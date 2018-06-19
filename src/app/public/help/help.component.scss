@@ -1,0 +1,13 @@
+.help-container {
+  display: flex;
+  position: absolute;
+
+  .help-menu {
+    position: fixed;
+    width: 30vw;
+  }
+
+  .help-content {
+    margin-left: 30vw;
+  }
+}
