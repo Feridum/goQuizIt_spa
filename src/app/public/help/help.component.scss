@@ -1,13 +1,27 @@
+@import "../../../variables";
+
 .help-container {
   display: flex;
   position: absolute;
 
   .help-menu {
     position: fixed;
-    width: 30vw;
+    background-color: $primary;
+    width: 20vw;
+    padding-top: 2vh;
+    min-height: 100%;
+    color: white;
+
+    a {
+      color: white;
+    }
   }
 
   .help-content {
-    margin-left: 30vw;
+    text-align: justify;
+    background-color: $secondary-light;
+    margin-left: 20vw;
+    min-height: 100%;
+    padding: 2vh 2vw;
   }
 }
