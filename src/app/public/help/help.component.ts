@@ -1,6 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-help',
@@ -9,7 +7,8 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class HelpComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

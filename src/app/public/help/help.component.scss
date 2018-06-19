@@ -18,10 +18,26 @@
   }
 
   .help-content {
-    text-align: justify;
     background-color: $secondary-light;
+    text-align: justify;
     margin-left: 20vw;
     min-height: 100%;
     padding: 2vh 2vw;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      font-size: 1.17rem;
+      font-weight: 600;
+      margin: 1rem 0 0.3rem 0;
+    }
+
+    .indent {
+      text-indent: 2vw;
+    }
   }
 }
