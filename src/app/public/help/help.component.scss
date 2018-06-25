@@ -9,8 +9,12 @@
     background-color: $primary;
     width: 20vw;
     padding-top: 2vh;
-    min-height: 100%;
     color: white;
+    min-height: 100vh;
+
+    .alpha-list {
+      list-style-type: lower-alpha;
+    }
 
     a {
       color: white;
@@ -21,8 +25,9 @@
     background-color: $secondary-light;
     text-align: justify;
     margin-left: 20vw;
-    min-height: 100%;
     padding: 2vh 2vw;
+    min-width: 80vw;
+    min-height: 100vh;
 
     ul {
       list-style: none;

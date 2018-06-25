@@ -20,11 +20,8 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
   @select(['player', 'question']) question: Observable<IPlayerQuestion>;
   @select$(['player', 'answers'], mapToArray) answers: Observable<IPlayerAnswer[]>;
 
-  //TODO:
-  //fetch question index as well to show "Question X/X"
   questionIndex: number;
   numberOfQuestions: number;
-
   questionId: String;
   questionType: string;
   playerId: String;
@@ -55,7 +52,6 @@ export class SingleQuestionComponent implements OnInit, OnDestroy {
       this.numberOfQuestions = player.numberOfQuestions;
     });
   }
-
 
   createForm() {
     this.questionForm = this.fb.group({

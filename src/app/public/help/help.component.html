@@ -1,19 +1,43 @@
 <div class="help-container">
   <div class="help-menu">
     <ol>
-      <li><a pageScroll href="#dictionary" fragment="#dictionary">Słownik pojęć</a></li>
-      <li>Admin
-        <ol>
-          <li><a routerLink="/help" fragment="new_account">Tworzenie nowego konta</a></li>
-          <li><a routerLink="/help" fragment="new_quiz">Tworzenie nowego quizu</a></li>
-          <li><a routerLink="/help" fragment="questions">Dodawanie pytań do quizu</a></li>
-          <li><a routerLink="/help" fragment="active">Aktywowanie quizu</a></li>
-          <li><a routerLink="/help" fragment="finished">Zakańczanie quizu</a></li>
+      <li><a routerLink="/help" [ngx-scroll-to]="'#dictionary'">Słownik pojęć</a></li>
+      <ol class="alpha-list">
+        <li><a routerLink="/help" [ngx-scroll-to]="'#guest'">Gość</a></li>
+        <li><a routerLink="/help" [ngx-scroll-to]="'#user'">Użytkownik</a></li>
+        <li><a routerLink="/help" [ngx-scroll-to]="'#player'">Gracz</a></li>
+        <li><a routerLink="/help" [ngx-scroll-to]="'#quiz'">Quiz</a></li>
+        <li><a routerLink="/help" [ngx-scroll-to]="'#question'">Pytanie quizowe</a></li>
+        <li><a routerLink="/help" [ngx-scroll-to]="'#token'">Token</a></li>
+        <li><a routerLink="/help" [ngx-scroll-to]="'#quiz_list'">Lista quizów</a></li>
+      </ol>
+      <li><a routerLink="/help" [ngx-scroll-to]="'#guest_actions'">Akcje Gościa</a>
+        <ol class="alpha-list">
+          <li><a routerLink="/help" [ngx-scroll-to]="'#log_in'">Logowanie</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#register'">Rejestracja</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#remind_password'">Przypomnienie hasła</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#search_quiz'">Wyszukanie quizu po tokenie</a></li>
         </ol>
       </li>
-      <li>Użytkownik
-        <ol>
-          <li><a routerLink="/help" fragment="player">Rozwiązywanie quizu</a></li>
+      <li><a routerLink="/help" [ngx-scroll-to]="'#user_actions'">Akcje Użytkownika</a>
+        <ol class="alpha-list">
+          <li><a routerLink="/help" [ngx-scroll-to]="'#add_new_quiz'">Tworzenie nowego quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#set_active'">Aktywowanie quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#set_finished'">Zakańczanie quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#edit_quiz'">Edycja quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#delete_quiz'">Usunięcie quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#add_new_questions'">Dodawanie pytań do quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#edit_question'">Edycja pytań</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#delete_questions'">Usuwanie pytań</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#view_players'">Podgląd graczy wybranego quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#view_results'">Podgląd wyników quizu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#generate_pdf'">Generowanie raportu</a></li>
+          <li><a routerLink="/help" [ngx-scroll-to]="'#log_out'">Wylogowanie</a></li>
+        </ol>
+      </li>
+      <li><a routerLink="/help" [ngx-scroll-to]="'#player_actions'">Akcje Gracza</a>
+        <ol class="alpha-list">
+          <li><a routerLink="/help" [ngx-scroll-to]="'#solve_quiz'">Rozwiązywanie quizu</a></li>
         </ol>
       </li>
     </ol>
@@ -21,96 +45,245 @@
 
   <div class="help-content">
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac sem lectus. Aliquam euismod mi sed tellus tempor
-    dictum. Pellentesque luctus commodo lacus, sit amet dignissim justo volutpat nec. Sed non magna quis est rutrum
-    egestas. Nullam vehicula posuere velit, sit amet dictum lorem blandit vitae. Morbi id tellus vulputate, venenatis
-    ligula sed, placerat erat. Cras sed faucibus ante, sed suscipit risus. Vivamus varius, ipsum vitae lacinia egestas,
-    tellus risus accumsan nunc, nec iaculis magna lorem nec risus. Curabitur non pulvinar velit. Aliquam nisi nisi,
-    lacinia sit amet leo eu, scelerisque molestie quam. Duis quis elit lobortis, consequat odio non, fringilla turpis.
-    Nulla fringilla eleifend risus a rhoncus. Donec eleifend egestas convallis.
-
-    Donec quis augue odio. Proin eleifend quam enim, non varius nisl rhoncus sed. Sed rhoncus auctor faucibus.
-    Pellentesque at tortor accumsan, interdum elit eu, cursus lectus. Aliquam vulputate vitae dui nec lobortis.
-    Curabitur id eros nec neque convallis luctus. Praesent nec felis at augue bibendum ornare. Morbi non libero
-    hendrerit, convallis sapien sit amet, consectetur nibh. Sed iaculis massa a lorem molestie, vel vulputate mi
-    elementum. Mauris tristique hendrerit risus, ac accumsan tortor feugiat vel. Nullam quis maximus diam.
-
-    Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi venenatis pulvinar nibh, consectetur cursus
-    risus lobortis pellentesque. Cras luctus tellus eu est faucibus ornare. Donec ornare porta erat. In sagittis
-    placerat tellus, in maximus arcu aliquet vel. Fusce eu sapien congue, tempus ipsum vitae, iaculis libero. Interdum
-    et malesuada fames ac ante ipsum primis in faucibus. Phasellus ac lacus sollicitudin diam fermentum cursus ac ac
-    mauris. Cras a felis fringilla, luctus ex tempor, aliquam elit.
-
-    Mauris laoreet luctus nisi vitae dapibus. Integer tristique ex at mi feugiat, eget venenatis sapien imperdiet. Etiam
-    vestibulum felis suscipit erat vulputate, id sollicitudin mauris consequat. Etiam consequat urna mi, nec porta dolor
-    tincidunt sed. Mauris tincidunt sapien vel diam tempus semper. Nunc sed nibh at mauris facilisis aliquet. Morbi
-    mollis luctus turpis ut blandit. In hac habitasse platea dictumst. Suspendisse porttitor mauris elit, dapibus mattis
-    urna sagittis congue. Pellentesque fermentum lorem ex, et iaculis elit porta a.
-
-    Mauris blandit nec lacus nec egestas. Curabitur sagittis dolor eu felis dapibus, id elementum tortor scelerisque.
-    Quisque at turpis fermentum, pellentesque libero id, accumsan lacus. Sed viverra metus et urna malesuada convallis.
-    Vestibulum semper nec nisi ac dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-    cubilia Curae; Curabitur cursus quam et mi iaculis, ac vehicula felis dapibus. Aliquam et tincidunt est. Nam aliquam
-    augue enim, ac mattis leo semper id.
-
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac sem lectus. Aliquam euismod mi sed tellus tempor
-    dictum. Pellentesque luctus commodo lacus, sit amet dignissim justo volutpat nec. Sed non magna quis est rutrum
-    egestas. Nullam vehicula posuere velit, sit amet dictum lorem blandit vitae. Morbi id tellus vulputate, venenatis
-    ligula sed, placerat erat. Cras sed faucibus ante, sed suscipit risus. Vivamus varius, ipsum vitae lacinia egestas,
-    tellus risus accumsan nunc, nec iaculis magna lorem nec risus. Curabitur non pulvinar velit. Aliquam nisi nisi,
-    lacinia sit amet leo eu, scelerisque molestie quam. Duis quis elit lobortis, consequat odio non, fringilla turpis.
-    Nulla fringilla eleifend risus a rhoncus. Donec eleifend egestas convallis.
-
-    Donec quis augue odio. Proin eleifend quam enim, non varius nisl rhoncus sed. Sed rhoncus auctor faucibus.
-    Pellentesque at tortor accumsan, interdum elit eu, cursus lectus. Aliquam vulputate vitae dui nec lobortis.
-    Curabitur id eros nec neque convallis luctus. Praesent nec felis at augue bibendum ornare. Morbi non libero
-    hendrerit, convallis sapien sit amet, consectetur nibh. Sed iaculis massa a lorem molestie, vel vulputate mi
-    elementum. Mauris tristique hendrerit risus, ac accumsan tortor feugiat vel. Nullam quis maximus diam.
-
-    Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi venenatis pulvinar nibh, consectetur cursus
-    risus lobortis pellentesque. Cras luctus tellus eu est faucibus ornare. Donec ornare porta erat. In sagittis
-    placerat tellus, in maximus arcu aliquet vel. Fusce eu sapien congue, tempus ipsum vitae, iaculis libero. Interdum
-    et malesuada fames ac ante ipsum primis in faucibus. Phasellus ac lacus sollicitudin diam fermentum cursus ac ac
-    mauris. Cras a felis fringilla, luctus ex tempor, aliquam elit.
-
-    Mauris laoreet luctus nisi vitae dapibus. Integer tristique ex at mi feugiat, eget venenatis sapien imperdiet. Etiam
-    vestibulum felis suscipit erat vulputate, id sollicitudin mauris consequat. Etiam consequat urna mi, nec porta dolor
-    tincidunt sed. Mauris tincidunt sapien vel diam tempus semper. Nunc sed nibh at mauris facilisis aliquet. Morbi
-    mollis luctus turpis ut blandit. In hac habitasse platea dictumst. Suspendisse porttitor mauris elit, dapibus mattis
-    urna sagittis congue. Pellentesque fermentum lorem ex, et iaculis elit porta a.
-
-    Mauris blandit nec lacus nec egestas. Curabitur sagittis dolor eu felis dapibus, id elementum tortor scelerisque.
-    Quisque at turpis fermentum, pellentesque libero id, accumsan lacus. Sed viverra metus et urna malesuada convallis.
-    Vestibulum semper nec nisi ac dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-    cubilia Curae; Curabitur cursus quam et mi iaculis, ac vehicula felis dapibus. Aliquam et tincidunt est. Nam aliquam
-    augue enim, ac mattis leo semper id.
-
     <div id="dictionary">
       <h2>Słownik pojęć</h2>
       <ul>
-        <li>Admin</li>
+        <li id="guest">Gość</li>
         <p class="indent">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac sem lectus. Aliquam euismod mi sed tellus tempor
-          dictum. Pellentesque luctus commodo lacus, sit amet dignissim justo volutpat nec. Sed non magna quis est rutrum
-          egestas. Nullam vehicula posuere velit, sit amet dictum lorem blandit vitae. Morbi id tellus vulputate, venenatis
-          ligula sed, placerat erat. Cras sed faucibus ante, sed suscipit risus. Vivamus varius, ipsum vitae lacinia egestas,
-          tellus risus accumsan nunc, nec iaculis magna lorem nec risus. Curabitur non pulvinar velit. Aliquam nisi nisi,
-          lacinia sit amet leo eu, scelerisque molestie quam. Duis quis elit lobortis, consequat odio non, fringilla turpis.
-          Nulla fringilla eleifend risus a rhoncus. Donec eleifend egestas convallis.
+          Osoba odwiedzająca portal <a routerLink="/">GoQuiz.It</a>, której tożsamość nie zostałą dotychczas
+          zweryfikowana ani w procesie <a routerLink="/help" [ngx-scroll-to]="'#log_in'">logowania</a>, ani wypełniając
+          formularza danych gracza.
         </p>
 
-        <li>Użytkownik</li>
+        <li id="user">Użytkownik</li>
         <p class="indent">
-          Mauris laoreet luctus nisi vitae dapibus. Integer tristique ex at mi feugiat, eget venenatis sapien imperdiet. Etiam
-          vestibulum felis suscipit erat vulputate, id sollicitudin mauris consequat. Etiam consequat urna mi, nec porta dolor
-          tincidunt sed. Mauris tincidunt sapien vel diam tempus semper. Nunc sed nibh at mauris facilisis aliquet. Morbi
-          mollis luctus turpis ut blandit. In hac habitasse platea dictumst. Suspendisse porttitor mauris elit, dapibus mattis
-          urna sagittis congue. Pellentesque fermentum lorem ex, et iaculis elit porta a.
+          Osoba zalogowana do uprzednio zarejestrowanego w serwisie konta. Posiadająca możliwość tworzenia oraz
+          zarządzania przypisanymi do konta Quizami.
+        </p>
+
+        <li id="player">Gracz</li>
+        <p class="indent">
+          Osoba odwiedzająca portal w celu rozwiązania quizu, posiadająca token i zweryfikowana formularzem danych
+          gracza przed przystąpieniem do odpowiadania na pytania quizowe.
+        </p>
+
+        <li id="quiz">Quiz</li>
+        <p class="indent">
+          Podstawowa obiekt działań serwisu. Tworzona przez użytkownika struktura o dowolnej nazwie, posiadająca
+          unikalny token dostępu i umożliwiająca dodawanie pytań, które następnie dostępne są dla egzaminowanych graczy.
+        </p>
+
+        <li id="question">Pytanie Quizowe</li>
+        <p class="indent">
+          Składowe każdego quizu. <br>
+          W serwisie dostępne są aktualnie trzy rodzaje pytań: <br>
+          &nbsp; &nbsp;
+          - pytania otwarte, <br>
+          &nbsp; &nbsp;
+          - pytania jednokrotnego wyboru, <br>
+          &nbsp; &nbsp;
+          - pytania wielokrotnego wyboru. <br>
+          Tworząc pytanie użytkownik określa jego: <br>
+          &nbsp; &nbsp;
+          - treść slużącą również jako nazwa, <br>
+          &nbsp; &nbsp;
+          - rodzaj, <br>
+          &nbsp; &nbsp;
+          - dla pytań zamkniętych - ilość odpowiedzi (z przedziału 2-4), <br>
+          &nbsp; &nbsp;
+          - treść możliwych odpowiedzi pytań zamkniętych, <br>
+          &nbsp; &nbsp;
+          - prawidłowe odpowiedzi (zaznaczając odpowiednie pole przy odpowiedzi). <br>
+          Punktowanie pytań odbywa się wg następujących zasad: <br>
+          &nbsp; &nbsp;
+          - pytania zamknięte - 1 pkt za całkowicie poprawną odpowiedź, <br>
+          &nbsp; &nbsp;
+          - pytania otwarte - brak wpływu na ocenę końcową.
+        </p>
+
+        <li id="token">Token</li>
+        <p class="indent">
+          Unikalny dla każdego quizu ciąg ośmiu znaków umożliwiający dołączanie graczy do sesji rozwiązywania pytań.
+          Chociaż generowany jest dla każdego quizu już na etapie jego tworzenia, to użytkownik ze względów
+          bezpieczeństwa (aby wykluczyć możliwość próbowania dołączenia do nieaktywnego quizu) może go zobaczyć dopiero
+          w zakładce "Aktywne quizy".
+        </p>
+
+        <li id="quiz_list">Lista quizów</li>
+        <p class="indent">
+          Lista stanowiąca główne okno widoku użytkownika, pozwalające na wygodne zarządzanie quizami.<br>
+          Składa się z trzech zakładek:<br>
+          &nbsp; &nbsp;
+          - niekatywne, <br>
+          &nbsp; &nbsp;
+          - aktywne.<br>
+          &nbsp; &nbsp;
+          - zakończone, <br>
+          porządkujących przypisane do użytkownika quizy wg ich statusu.
+        </p>
+
+      </ul>
+    </div>
+
+    <div id="guest_actions">
+      <h2>Akcje gościa</h2>
+      <ul>
+        <li id="log_in">Logowanie</li>
+        <p class="indent">
+          Proces w którym gość podając w <a routerLink="/login">formularzu logowania</a> dane zarejestrowanego uprzednio
+          konta i przechodząc pomyślnie proces weryfikacji może uzyskać uprawnienia użytkownika.
+        </p>
+
+        <li id="register">Rejestracja</li>
+        <p class="indent">
+          Proces tworzenia nowego konta w serwisie dostępny za pośrednictwem strony <a routerLink="/register">rejestracji</a>.
+          <br>
+          W tym celu konieczne jest podanie następującego zestawu danych: <br>
+          &nbsp; &nbsp;
+          - nazwa użytkownika, <br>
+          &nbsp; &nbsp;
+          - e-mail, <br>
+          &nbsp; &nbsp;
+          - hasło. <br>
+          Rejestracja w przeciwieństwie do <a routerLink="/help" [ngx-scroll-to]="'#remind_password'">przypominania
+          hasła</a> nie wymaga potwierdzenia przez e-mail.
+        </p>
+
+        <li id="remind_password">Przypomnienie hasła</li>
+        <p class="indent">
+          Proces, w którym gość posiadający konto w serwisie może je zresetować za pośrednictwem podanej przy
+          rejestracji elektronicznej skrzynki pocztowej. <a routerLink="/forgot-password">Formularz przypominania
+          hasła</a> wymaga tylko podania adresu e-mail. Jeśli powiązane z nim konto użytkownika istnieje w systemie, na
+          ten sam adres przesłany zostanie specjalnie do tego celu wygenerowany link z jednorazowym tokenem
+          uwierzytelniającym pozwalającym na ustawienie nowego hasła użytkownika.
+        </p>
+
+        <li id="search_quiz">Wyszukanie quizu po tokenie</li>
+        <p class="indent">
+          Jeśli odwiedziny gościa związane są z chęcią rozwiązania przez niego quizu i posiada on przekazany przez jego
+          twórce (użytkownika) token, za pośrednictwem tej akcji może przejść do rozwiązywania quizu i stać się graczem.
         </p>
       </ul>
     </div>
 
-  </div>
+    <div id="user_actions">
+      <h2>Akcje Użytkownika</h2>
+      <ul>
+        <li id="add_new_quiz">Tworzenie nowego quizu</li>
+        <p class="indent">
+          Akcja dostępna z zakładki "nieaktywne" listy quizów po przyciśnięciu ikony plusa obecnej na samym jej spodzie.
+          Tworzenie quizu wymaga nadania mu nazwy, oraz wyboru, jakie dane <b>muszą</b> być podawane przez graczy
+          chcących go rozwiązać (e-mail/telefon).
+        </p>
 
+        <li id="set_active">Aktywowanie quizu</li>
+        <p class="indent">
+          Opcja dostępna w kolumnie "akcje" wybranego quizu w zakładce "nieaktywne". Powoduje przeniesienie wybranego
+          quizu do zakładki "aktywne" umożliwiając tym samym podejrzenie jego tokenu i rozwiązywanie przez graczy.
+        </p>
+
+        <li id="set_finished">Zakończenie quizu</li>
+        <p class="indent">
+          Opcja dostępna w kolumnie "akcje" wybranego quizu w zakładce "aktywne". Powoduje przeniesienie wybranego quizu
+          do zakładki "zakończone" uniemożliwiając dalsze rozwiązywanie przez graczy, pozwalając z koleii na podejrzenie
+          wyników i wygenerowanie raportu.
+        </p>
+
+        <li id="edit_quiz">Edycja quizu</li>
+        <p class="indent">
+          Opcja dostępna w kolumnie "akcje" z poziomu zakładki "nieaktywne". Za pośrednictwem ikony zębatek możemy
+          modyfikować wartości pól ustawionych w procesie tworzenia quizu.
+        </p>
+
+        <li id="delete_quiz">Usunięcie quizu</li>
+        <p class="indent">
+          Opcja dostępna w kolumnie "akcje" wybranego quizu zarówno w zakładce "nieaktywne" jak i "zakończone". Powoduje
+          nieodwracalne usunięcie quizu i wszystkich powiązanych z nim danych.
+        </p>
+
+        <li id="add_new_questions">Dodawanie pytań do quizu</li>
+        <p class="indent">
+          Dodanie pytania możliwe jest z listy pytań quizu, dostępnej z menu akcji w zakładce "nieaktywne". Lista pytań
+          posiada ikonę plusa analogiczną do listy quizów, po przyciśnięciu której przeniesieni zostajemy do formularza
+          Atrybutów pytania. <br>
+          Dostępne dla każdego pytania atrybuty są następujące: <br>
+          &nbsp; &nbsp;
+          - treść pytania, <br>
+          &nbsp; &nbsp;
+          - rodzaj pytania oraz w zależności od wybranej opcji <br>
+          &nbsp; &nbsp;
+          - treść, ilość i poprawność odpowiedzi.
+        </p>
+
+        <li id="edit_question">Edycja pytań</li>
+        <p class="indent">
+          Edycja dostępna jest po kliknięciu ikony zębatek z posiomu listy pytań. Modyfikacja może dotyczyć pól
+          tożsamych z tymi dostępnymi podczas tworzenia nowego pytania.
+        </p>
+
+        <li id="delete_questions">Usuwanie pytań</li>
+        <p class="indent">
+          Usuwanie pytań podobnie jak ich dodawanie dostępne jest z poziomu listy pytań. Po przyciśnięciu ikony kosza
+          pytanie i wszystkie powiązane z nim dane są nieodwracalnie kasowane z bazy.
+        </p>
+
+        <li id="view_players">Podgląd graczy wybranego quizu</li>
+        <p class="indent">
+          Opcja dostępna w kolumnie "akcje" zakładki "aktywne". Umożliwia wylistowanie graczy, którzy podali i poprawnie
+          zatwierdzili formularz danych podając token powiązany z wybranym quizem.
+        </p>
+
+        <li id="view_results">Podgląd wyników quizu</li>
+        <p class="indent">
+          Akcja umożliwiana z poziomu zakładki "zakończone" listy quizów. Ikona wykresu jest odnośnikiem do widoku z
+          listą graczy i ich wynikami.
+        </p>
+
+        <li id="generate_pdf">Generowanie raportu</li>
+        <p class="indent">
+          Akcja dostępna w zakładce "zakończone" za pośrednictwem ikony dokumentu acrobat. <br>
+          Pozwala wygenerować plik wynikowy w formacie *.pdf zawierający: <br>
+          &nbsp; &nbsp;
+          a) dane quizu, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - id, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - nazwa quizu; <br>
+          &nbsp; &nbsp;
+          b) dane użytkowników, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - imię, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - nazwisko, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - e-mail, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - telefon, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - wynik punktowy, <br>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          - listę pytań i udzielonych odpowiedzi (na zielono - poprawne, czerwono - niepoprawne, pomarańczowo - pytania
+          otwarte).
+        </p>
+
+        <li id="log_out">Wylogowanie</li>
+        <p class="indent">
+          Akcja skutkująca zakończeniem aktualnej sesji użytkownika. Wywołanie następuje po naciśnięciu przycisku "Wyloguj" dostępnego w widoku głównym użytkownika bez względu na wybraną zakładkę. Po wylogowaniu token sesji usuwany jest z pamięci local-storage, przez co autoryzacja dostępu do żadnej z wcześniej dostępnych stron (również przez opcję "cofnij" udostępnianą domyślnie przez przeglądarki) nie umożliwi poprawnego wczytania strony.
+        </p>
+      </ul>
+    </div>
+
+    <div id="player_actions">
+      <h2>Akcje Gracza</h2>
+      <ul>
+        <li id="solve_quiz">Rozwiązywanie quizu</li>
+        <p class="indent">
+          Gracz po zatwierdzeniu swoich danych może przejść do rozwiązywania quizu, którego tokenu użył w procesie
+          wyszukiwania po tokenie. Po wprowadzeniu odpowiedzi użytkownika i potwierdzeniu wyboru następuje przejście do
+          kolejnego pytania. Powrót do poprzednich pytań nie jest możliwy. Numer obecnego pytania oraz ilość pytań quizu
+          wyświetlane są w nagłówku widoku pytania.
+        </p>
+      </ul>
+    </div>
+  </div>
 </div>
